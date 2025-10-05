@@ -3,7 +3,8 @@ Configuration management for the automation platform
 """
 
 from pydantic_settings import BaseSettings
-from typing import Optional
+from pydantic import Field
+from typing import Optional, List
 import os
 from pathlib import Path
 
@@ -16,55 +17,94 @@ class Settings(BaseSettings):
     VERSION: str = "2.0.0"
 
     # Database
-    DATABASE_URL: str = "sqlite:///./job_automation.db"  # SQLite for easy local dev
-    # For production PostgreSQL:
-    # DATABASE_URL: str = "postgresql+asyncpg://user:password@localhost/jobsearch"
+    DATABASE_URL: str = Field(
+        default="sqlite+aiosqlite:///./job_search.db",
+        env="DATABASE_URL"
+    )
 
     # Security
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
+    SECRET_KEY: str = Field(
+        default="your-secret-key-change-in-production",
+        env="SECRET_KEY"
+    )
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # Email Settings (Gmail API)
-    GMAIL_CREDENTIALS_FILE: str = str(Path.home() / ".credentials" / "gmail_credentials.json")
-    GMAIL_TOKEN_FILE: str = str(Path.home() / ".credentials" / "gmail_token.json")
-    GMAIL_SCOPES: list = [
-        "https://www.googleapis.com/auth/gmail.readonly",
-        "https://www.googleapis.com/auth/gmail.modify",
-        "https://www.googleapis.com/auth/gmail.labels"
-    ]
+    GMAIL_CREDENTIALS_FILE: Optional[str] = Field(
+        default=None,
+        env="GMAIL_CREDENTIALS_FILE"
+    )
+    GMAIL_TOKEN_FILE: Optional[str] = Field(
+        default=None,
+        env="GMAIL_TOKEN_FILE"
+    )
+    GMAIL_SCOPES: Optional[str] = Field(
+        default=None,
+        env="GMAIL_SCOPES"
+    )
+
+    @property
+    def gmail_scopes_list(self) -> List[str]:
+        """Get Gmail scopes as a list"""
+        if self.GMAIL_SCOPES:
+            return self.GMAIL_SCOPES.split(",")
+        return [
+            "https://www.googleapis.com/auth/gmail.readonly",
+            "https://www.googleapis.com/auth/gmail.modify",
+            "https://www.googleapis.com/auth/gmail.labels"
+        ]
 
     # LinkedIn Settings
-    LINKEDIN_EMAIL: Optional[str] = os.getenv("LINKEDIN_EMAIL")
-    LINKEDIN_PASSWORD: Optional[str] = os.getenv("LINKEDIN_PASSWORD")
-    LINKEDIN_HEADLESS: bool = True
+    LINKEDIN_EMAIL: Optional[str] = Field(default=None, env="LINKEDIN_EMAIL")
+    LINKEDIN_PASSWORD: Optional[str] = Field(default=None, env="LINKEDIN_PASSWORD")
+    LINKEDIN_HEADLESS: bool = Field(default=True, env="LINKEDIN_HEADLESS")
     LINKEDIN_MAX_CONNECTIONS_PER_DAY: int = 20
 
     # OpenAI Settings
-    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
+    OPENAI_API_KEY: Optional[str] = Field(default=None, env="OPENAI_API_KEY")
     OPENAI_MODEL: str = "gpt-4-turbo-preview"
     OPENAI_TEMPERATURE: float = 0.7
 
     # Job Search Settings
-    JOB_SEARCH_KEYWORDS: list = ["business analyst", "data analyst", "healthcare analyst"]
+    JOB_SEARCH_KEYWORDS: str = Field(
+        default="business analyst,data analyst,healthcare analyst",
+        env="JOB_SEARCH_KEYWORDS"
+    )
     JOB_SEARCH_LOCATION: str = "Louisville, KY"
     JOB_SEARCH_RADIUS: int = 50  # miles
 
+    @property
+    def job_search_keywords_list(self) -> List[str]:
+        """Get job search keywords as a list"""
+        return [k.strip() for k in self.JOB_SEARCH_KEYWORDS.split(",")]
+
     # Application Settings
-    APPLICATIONS_DIR: Path = Path.home() / "Desktop" / "Job_Search" / "applications"
-    TEMPLATES_DIR: Path = Path.home() / "Desktop" / "Job_Search" / "documents"
+    APPLICATIONS_DIR: str = Field(
+        default=str(Path.home() / "Desktop" / "Job_Search" / "applications"),
+        env="APPLICATIONS_DIR"
+    )
+    TEMPLATES_DIR: str = Field(
+        default=str(Path.home() / "Desktop" / "Job_Search" / "documents"),
+        env="TEMPLATES_DIR"
+    )
     MAX_APPLICATIONS_PER_DAY: int = 10
 
     # Redis Settings (for task queue)
-    REDIS_URL: str = "redis://localhost:6379"
-    CELERY_BROKER_URL: str = "redis://localhost:6379/0"
-    CELERY_RESULT_BACKEND: str = "redis://localhost:6379/1"
+    REDIS_URL: str = Field(default="redis://localhost:6379", env="REDIS_URL")
+    CELERY_BROKER_URL: str = Field(default="redis://localhost:6379/0", env="CELERY_BROKER_URL")
+    CELERY_RESULT_BACKEND: str = Field(default="redis://localhost:6379/1", env="CELERY_RESULT_BACKEND")
 
     # Automation Settings
-    AUTO_FOLLOW_UP_DAYS: list = [7, 14, 21]
-    ATS_MINIMUM_SCORE: int = 70
-    EMAIL_CHECK_INTERVAL_MINUTES: int = 30
-    JOB_AGGREGATION_INTERVAL_HOURS: int = 6
+    AUTO_FOLLOW_UP_DAYS: str = Field(default="7,14,21", env="AUTO_FOLLOW_UP_DAYS")
+    ATS_MINIMUM_SCORE: int = Field(default=70, env="ATS_MINIMUM_SCORE")
+    EMAIL_CHECK_INTERVAL_MINUTES: int = Field(default=30, env="EMAIL_CHECK_INTERVAL_MINUTES")
+    JOB_AGGREGATION_INTERVAL_HOURS: int = Field(default=6, env="JOB_AGGREGATION_INTERVAL_HOURS")
+
+    @property
+    def auto_follow_up_days_list(self) -> List[int]:
+        """Get follow-up days as a list of integers"""
+        return [int(d.strip()) for d in self.AUTO_FOLLOW_UP_DAYS.split(",")]
 
     # Logging
     LOG_LEVEL: str = "INFO"
@@ -73,10 +113,11 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"  # Ignore extra fields from .env
 
 # Create settings instance
 settings = Settings()
 
 # Ensure required directories exist
-settings.APPLICATIONS_DIR.mkdir(parents=True, exist_ok=True)
-settings.TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
+Path(settings.APPLICATIONS_DIR).mkdir(parents=True, exist_ok=True)
+Path(settings.TEMPLATES_DIR).mkdir(parents=True, exist_ok=True)

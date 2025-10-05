@@ -10,16 +10,22 @@ from sqlalchemy import create_engine
 from backend.core.config import settings
 
 # For SQLite (simpler for local development)
-if settings.DATABASE_URL.startswith("sqlite"):
-    # Async SQLite
+if "sqlite" in settings.DATABASE_URL:
+    # Async SQLite - ensure it has the right driver
+    if "aiosqlite" not in settings.DATABASE_URL:
+        db_url = settings.DATABASE_URL.replace("sqlite://", "sqlite+aiosqlite://")
+    else:
+        db_url = settings.DATABASE_URL
+
     engine = create_async_engine(
-        settings.DATABASE_URL.replace("sqlite://", "sqlite+aiosqlite://"),
+        db_url,
         echo=False,
         future=True
     )
     # Sync engine for migrations
+    sync_url = db_url.replace("+aiosqlite", "")
     sync_engine = create_engine(
-        settings.DATABASE_URL,
+        sync_url,
         echo=False
     )
 else:

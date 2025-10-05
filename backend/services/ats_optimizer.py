@@ -4,7 +4,7 @@ This analyzes job descriptions and optimizes resumes to pass ATS filters
 """
 
 import re
-from typing import Dict, List, Set, Tuple, Any
+from typing import Dict, List, Set, Tuple, Any, Optional
 from collections import Counter
 import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer

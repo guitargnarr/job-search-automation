@@ -13,13 +13,21 @@ from enum import Enum
 from backend.core.database import get_db
 from backend.models.models import (
     Application, Job, Company, ApplicationStatus,
-    ResponseType, FollowUp, FollowUpType, Priority
+    ResponseType, FollowUp, Priority
 )
 from backend.core.logging import get_logger
-from backend.services.email_service import EmailService
+from backend.services.email_service import EmailAutomationService as EmailService
 
 logger = get_logger(__name__)
 router = APIRouter()
+
+# Define FollowUpType enum locally since it's not in models
+class FollowUpType(str, Enum):
+    APPLICATION_STATUS = "APPLICATION_STATUS"
+    THANK_YOU = "THANK_YOU"
+    POST_INTERVIEW = "POST_INTERVIEW"
+    NO_RESPONSE = "NO_RESPONSE"
+    DECISION_PENDING = "DECISION_PENDING"
 
 class FollowUpCreate(BaseModel):
     application_id: int

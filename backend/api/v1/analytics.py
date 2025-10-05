@@ -12,7 +12,7 @@ from collections import defaultdict
 from backend.core.database import get_db
 from backend.models.models import (
     Application, Job, Company, ApplicationStatus,
-    ResponseType, Priority, EmailResponse, LinkedInConnection
+    ResponseType, Priority, EmailTracking, LinkedInOutreach
 )
 from backend.core.logging import get_logger
 
