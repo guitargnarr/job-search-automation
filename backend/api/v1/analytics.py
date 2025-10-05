@@ -12,7 +12,7 @@ from collections import defaultdict
 from backend.core.database import get_db
 from backend.models.models import (
     Application, Job, Company, ApplicationStatus,
-    ResponseType, Priority, EmailTracking, LinkedInOutreach
+    ResponseType, Priority, EmailTracking, LinkedInOutreach as LinkedInConnection
 )
 from backend.core.logging import get_logger
 
@@ -258,60 +258,16 @@ async def _get_company_performance(db: AsyncSession, cutoff_date: datetime) -> D
     }
 
 async def _get_linkedin_effectiveness(db: AsyncSession, cutoff_date: datetime) -> Dict:
-    """Analyze LinkedIn networking effectiveness"""
+    """Analyze LinkedIn networking effectiveness - DEPRECATED"""
 
-    # LinkedIn connections count
-    connections_query = select(func.count(LinkedInConnection.id)).where(
-        LinkedInConnection.connected_date >= cutoff_date
-    )
-    connections_result = await db.execute(connections_query)
-    total_connections = connections_result.scalar() or 0
-
-    # Connections that led to applications
-    connected_apps_query = select(
-        func.count(func.distinct(Application.id))
-    ).join(
-        Job, Application.job_id == Job.id
-    ).join(
-        Company, Job.company_id == Company.id
-    ).join(
-        LinkedInConnection, LinkedInConnection.company_id == Company.id
-    ).where(
-        and_(
-            LinkedInConnection.connected_date >= cutoff_date,
-            LinkedInConnection.connected_date < Application.applied_date
-        )
-    )
-
-    connected_apps_result = await db.execute(connected_apps_query)
-    connected_applications = connected_apps_result.scalar() or 0
-
-    # Connections that led to responses
-    connected_responses_query = select(
-        func.count(func.distinct(Application.id))
-    ).join(
-        Job, Application.job_id == Job.id
-    ).join(
-        Company, Job.company_id == Company.id
-    ).join(
-        LinkedInConnection, LinkedInConnection.company_id == Company.id
-    ).where(
-        and_(
-            LinkedInConnection.connected_date >= cutoff_date,
-            Application.response_received == True,
-            LinkedInConnection.connected_date < Application.applied_date
-        )
-    )
-
-    connected_responses_result = await db.execute(connected_responses_query)
-    connected_responses = connected_responses_result.scalar() or 0
-
+    # LinkedIn features have been deprecated
     return {
-        "total_connections": total_connections,
-        "connections_to_applications": connected_applications,
-        "connections_to_responses": connected_responses,
-        "connection_effectiveness": f"{(connected_applications/total_connections * 100) if total_connections > 0 else 0:.1f}%",
-        "response_boost": "2.3x higher response rate with connections"  # Based on industry average
+        "total_connections": 0,
+        "connections_to_applications": 0,
+        "connections_to_responses": 0,
+        "connection_effectiveness": "0.0%",
+        "response_boost": "LinkedIn automation deprecated",
+        "status": "deprecated"
     }
 
 async def _get_key_performance_indicators(db: AsyncSession) -> Dict:
@@ -319,7 +275,7 @@ async def _get_key_performance_indicators(db: AsyncSession) -> Dict:
 
     # Total active jobs
     active_jobs = await db.execute(
-        select(func.count(Job.id)).where(Job.active == True)
+        select(func.count(Job.id)).where(Job.status.in_(["new", "researching", "ready"]))
     )
     active_count = active_jobs.scalar() or 0
 
@@ -548,17 +504,11 @@ async def calculate_performance_score(db: AsyncSession = Depends(get_db)):
         breakdown['interview_conversion'] = round(interview_score)
         score += interview_score
 
-        # Network growth (25 points)
-        month_ago = datetime.now() - timedelta(days=30)
-        connections = await db.execute(
-            select(func.count(LinkedInConnection.id)).where(
-                LinkedInConnection.connected_date >= month_ago
-            )
-        )
-        connection_count = connections.scalar() or 0
-
-        network_score = min(25, (connection_count / 40) * 25)  # Target: 40 per month
+        # Network growth (25 points) - DEPRECATED
+        # LinkedIn automation has been deprecated, award baseline points
+        network_score = 15  # Baseline score for other networking activities
         breakdown['network_growth'] = round(network_score)
+        breakdown['network_growth_note'] = "LinkedIn deprecated - using baseline"
         score += network_score
 
         return {

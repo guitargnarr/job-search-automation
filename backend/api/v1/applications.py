@@ -2,7 +2,7 @@
 Application management API endpoints
 """
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from typing import Dict, Any, List, Optional
@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from pydantic import BaseModel
 
 from backend.core.database import get_db
+from backend.core.config import settings
 from backend.models.models import Application, Job, Company, ApplicationStatus, Priority
 from backend.core.logging import get_logger
 
@@ -71,11 +72,13 @@ async def create_application(
 @router.get("/list")
 async def list_applications(
     status: Optional[ApplicationStatus] = None,
-    limit: int = 50,
+    limit: int = Query(default=50, le=100, description="Max 100 items per page"),
     db: AsyncSession = Depends(get_db)
 ):
-    """List all applications with optional filtering"""
+    """List all applications with optional filtering (max 100 per page)"""
     try:
+        # Enforce maximum page size
+        limit = min(limit, settings.MAX_API_PAGE_SIZE)
         query = select(Application, Job, Company).join(
             Job, Application.job_id == Job.id
         ).join(

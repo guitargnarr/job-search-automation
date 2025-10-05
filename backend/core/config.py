@@ -101,6 +101,10 @@ class Settings(BaseSettings):
     EMAIL_CHECK_INTERVAL_MINUTES: int = Field(default=30, env="EMAIL_CHECK_INTERVAL_MINUTES")
     JOB_AGGREGATION_INTERVAL_HOURS: int = Field(default=6, env="JOB_AGGREGATION_INTERVAL_HOURS")
 
+    # API Pagination Limits (prevent memory exhaustion)
+    MAX_API_PAGE_SIZE: int = Field(default=100, env="MAX_API_PAGE_SIZE")
+    DEFAULT_API_PAGE_SIZE: int = Field(default=50, env="DEFAULT_API_PAGE_SIZE")
+
     @property
     def auto_follow_up_days_list(self) -> List[int]:
         """Get follow-up days as a list of integers"""

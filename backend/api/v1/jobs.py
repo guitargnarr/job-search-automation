@@ -12,6 +12,7 @@ from pydantic import BaseModel, HttpUrl
 from backend.core.database import get_db
 from backend.models.models import Job, Company, Application, Priority, ApplicationStatus
 from backend.core.logging import get_logger
+from backend.core.config import settings
 from backend.services.ats_optimizer import ATSOptimizer
 
 logger = get_logger(__name__)
@@ -21,10 +22,10 @@ ats_optimizer = ATSOptimizer()
 class JobCreate(BaseModel):
     company_name: str
     title: str
-    description: str
-    url: HttpUrl
+    job_description: str  # Fixed: matches model field name
+    job_url: HttpUrl      # Fixed: matches model field name
     location: Optional[str] = None
-    remote_allowed: bool = False
+    remote_type: Optional[str] = "remote"  # Fixed: matches model field name
     salary_min: Optional[int] = None
     salary_max: Optional[int] = None
     priority: Priority = Priority.MEDIUM
@@ -32,13 +33,13 @@ class JobCreate(BaseModel):
 
 class JobUpdate(BaseModel):
     title: Optional[str] = None
-    description: Optional[str] = None
+    job_description: Optional[str] = None  # Fixed: matches model
     location: Optional[str] = None
-    remote_allowed: Optional[bool] = None
+    remote_type: Optional[str] = None      # Fixed: matches model
     salary_min: Optional[int] = None
     salary_max: Optional[int] = None
     priority: Optional[Priority] = None
-    active: Optional[bool] = None
+    status: Optional[str] = None           # Fixed: model uses 'status' not 'active'
 
 @router.post("/create")
 async def create_job(
@@ -65,15 +66,15 @@ async def create_job(
         new_job = Job(
             company_id=company.id,
             title=job_data.title,
-            description=job_data.description,
-            url=str(job_data.url),
+            job_description=job_data.job_description,  # Fixed
+            job_url=str(job_data.job_url),             # Fixed
             location=job_data.location,
-            remote_allowed=job_data.remote_allowed,
+            remote_type=job_data.remote_type,          # Fixed
             salary_min=job_data.salary_min,
             salary_max=job_data.salary_max,
             priority=job_data.priority,
-            posted_date=datetime.now(),
-            active=True
+            posted_date=datetime.now().date(),
+            status="new"                                # Fixed: use status
         )
 
         db.add(new_job)
@@ -84,10 +85,10 @@ async def create_job(
         analysis = None
         if job_data.auto_analyze:
             try:
-                analysis = ats_optimizer.analyze_job_description(job_data.description)
+                analysis = ats_optimizer.analyze_job_description(job_data.job_description)  # Fixed
                 # Store keywords in job record
                 if analysis.get('keywords'):
-                    new_job.keywords = ', '.join(analysis['keywords'][:10])
+                    new_job.keywords = analysis['keywords'][:10]  # Store as list
                     await db.commit()
             except Exception as e:
                 logger.warning(f"ATS analysis failed: {e}")
@@ -111,12 +112,14 @@ async def list_jobs(
     priority: Optional[Priority] = None,
     company_id: Optional[int] = None,
     search: Optional[str] = None,
-    limit: int = 50,
+    limit: int = Query(default=50, le=100, description="Max 100 items per page"),
     offset: int = 0,
     db: AsyncSession = Depends(get_db)
 ):
-    """List jobs with filtering and search"""
+    """List jobs with filtering and search (max 100 per page)"""
     try:
+        # Enforce maximum page size
+        limit = min(limit, settings.MAX_API_PAGE_SIZE)
         query = select(Job, Company, func.count(Application.id)).join(
             Company, Job.company_id == Company.id
         ).outerjoin(
@@ -125,7 +128,7 @@ async def list_jobs(
 
         # Apply filters
         if active_only:
-            query = query.where(Job.active == True)
+            query = query.where(Job.status.in_(["new", "researching", "ready"]))
 
         if priority:
             query = query.where(Job.priority == priority)
@@ -155,7 +158,7 @@ async def list_jobs(
         # Get total count
         count_query = select(func.count(Job.id))
         if active_only:
-            count_query = count_query.where(Job.active == True)
+            count_query = count_query.where(Job.status.in_(["new", "researching", "ready"]))
         total_result = await db.execute(count_query)
         total_count = total_result.scalar()
 
@@ -169,13 +172,13 @@ async def list_jobs(
                     "company": job.Company.name,
                     "title": job.Job.title,
                     "location": job.Job.location,
-                    "remote_allowed": job.Job.remote_allowed,
+                    "remote_type": job.Job.remote_type,
                     "salary_range": f"${job.Job.salary_min or 0}-${job.Job.salary_max or 0}" if job.Job.salary_min or job.Job.salary_max else None,
                     "priority": job.Job.priority.value if job.Job.priority else "MEDIUM",
-                    "url": job.Job.url,
+                    "url": job.Job.job_url,
                     "posted_date": job.Job.posted_date.isoformat() if job.Job.posted_date else None,
                     "application_count": job[2],
-                    "active": job.Job.active
+                    "status": job.Job.status
                 }
                 for job in jobs
             ]
@@ -212,9 +215,9 @@ async def get_job_details(
 
         # Run ATS analysis
         ats_analysis = None
-        if job.description:
+        if job.job_description:
             try:
-                ats_analysis = ats_optimizer.analyze_job_description(job.description)
+                ats_analysis = ats_optimizer.analyze_job_description(job.job_description)
             except Exception as e:
                 logger.warning(f"ATS analysis failed: {e}")
 
@@ -227,15 +230,15 @@ async def get_job_details(
                 "linkedin_url": company.linkedin_url
             },
             "title": job.title,
-            "description": job.description,
+            "job_description": job.job_description,
             "location": job.location,
-            "remote_allowed": job.remote_allowed,
+            "remote_type": job.remote_type,
             "salary_min": job.salary_min,
             "salary_max": job.salary_max,
             "priority": job.priority.value if job.priority else "MEDIUM",
-            "url": job.url,
+            "url": job.job_url,
             "posted_date": job.posted_date.isoformat() if job.posted_date else None,
-            "active": job.active,
+            "status": job.status,
             "applied": application is not None,
             "application_status": application.status.value if application and application.status else None,
             "ats_analysis": ats_analysis
@@ -266,20 +269,20 @@ async def update_job(
         # Update fields
         if update_data.title:
             job.title = update_data.title
-        if update_data.description:
-            job.description = update_data.description
+        if update_data.job_description:
+            job.job_description = update_data.job_description
         if update_data.location:
             job.location = update_data.location
-        if update_data.remote_allowed is not None:
-            job.remote_allowed = update_data.remote_allowed
+        if update_data.remote_type is not None:
+            job.remote_type = update_data.remote_type
         if update_data.salary_min:
             job.salary_min = update_data.salary_min
         if update_data.salary_max:
             job.salary_max = update_data.salary_max
         if update_data.priority:
             job.priority = update_data.priority
-        if update_data.active is not None:
-            job.active = update_data.active
+        if update_data.status is not None:
+            job.status = update_data.status
 
         job.updated_at = datetime.now()
 
@@ -320,13 +323,13 @@ async def delete_job(
             if not job:
                 raise HTTPException(status_code=404, detail="Job not found")
 
-            job.active = False
+            job.status = "closed"
             job.updated_at = datetime.now()
             await db.commit()
 
             return {
                 "status": "success",
-                "message": "Job deactivated (has applications)",
+                "message": "Job closed (has applications)",
                 "applications_count": app_count
             }
         else:
@@ -360,7 +363,7 @@ async def get_job_stats(db: AsyncSession = Depends(get_db)):
     try:
         # Total active jobs
         active_result = await db.execute(
-            select(func.count(Job.id)).where(Job.active == True)
+            select(func.count(Job.id)).where(Job.status.in_(["new", "researching", "ready"]))
         )
         active_count = active_result.scalar()
 
@@ -368,7 +371,7 @@ async def get_job_stats(db: AsyncSession = Depends(get_db)):
         priority_query = select(
             Job.priority,
             func.count(Job.id)
-        ).where(Job.active == True).group_by(Job.priority)
+        ).where(Job.status.in_(["new", "researching", "ready"])).group_by(Job.priority)
 
         priority_result = await db.execute(priority_query)
         priority_breakdown = {
@@ -383,12 +386,12 @@ async def get_job_stats(db: AsyncSession = Depends(get_db)):
         applied_count = applied_result.scalar()
 
         # Recent jobs (last 7 days)
-        recent_date = datetime.now() - timedelta(days=7)
+        recent_date = datetime.now().date() - timedelta(days=7)
         recent_result = await db.execute(
             select(func.count(Job.id)).where(
                 and_(
                     Job.posted_date >= recent_date,
-                    Job.active == True
+                    Job.status.in_(["new", "researching", "ready"])
                 )
             )
         )
@@ -401,7 +404,7 @@ async def get_job_stats(db: AsyncSession = Depends(get_db)):
         ).join(
             Job, Company.id == Job.company_id
         ).where(
-            Job.active == True
+            Job.status.in_(["new", "researching", "ready"])
         ).group_by(Company.name).order_by(
             func.count(Job.id).desc()
         ).limit(5)
