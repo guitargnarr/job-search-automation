@@ -1,0 +1,279 @@
+#!/usr/bin/env python3
+"""
+Job Search Automation CLI Tool
+Version: 1.0.0 (Augmentation Layer 1)
+
+Simple command-line interface for Job Search Automation Platform
+Uses existing API - NO CORE CHANGES to backend
+
+Usage:
+    job-search list                    # List all jobs
+    job-search list --priority HIGH    # Filter by priority
+    job-search show <id>               # Show job details
+    job-search stats                   # Show statistics
+    job-search apps                    # List applications
+    job-search health                  # Check server health
+
+Author: Built as augmentation layer on top of v2.1.1 core
+"""
+
+import sys
+import requests
+import json
+from typing import Optional
+
+# Configuration
+API_BASE = "http://localhost:8899/api/v1"
+HEALTH_URL = "http://localhost:8899/health"
+
+# Colors for terminal output
+class Colors:
+    HEADER = '\033[95m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    END = '\033[0m'
+    BOLD = '\033[1m'
+
+def print_header(text):
+    """Print formatted header"""
+    print(f"\n{Colors.BOLD}{'='*80}{Colors.END}")
+    print(f"{Colors.BOLD}{text:^80}{Colors.END}")
+    print(f"{Colors.BOLD}{'='*80}{Colors.END}\n")
+
+def cmd_list(priority: Optional[str] = None):
+    """List all jobs"""
+    url = f"{API_BASE}/jobs/list?limit=50"
+    if priority:
+        url += f"&priority={priority}"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+
+        print_header(f"{data['total']} Jobs in System")
+
+        for job in data['jobs']:
+            # Color code by priority
+            if job['priority'] == 'HIGH':
+                color = Colors.GREEN
+            elif job['priority'] == 'MEDIUM':
+                color = Colors.YELLOW
+            else:
+                color = Colors.END
+
+            print(f"{color}[{job['id']:2d}] [{job['priority']:6s}]{Colors.END} {job['company']}")
+            print(f"     {job['title']}")
+            print(f"     {job['remote_type'].upper()} | {job['salary_range']}")
+
+            if job['application_count'] > 0:
+                print(f"     ✓ Applied")
+
+            print()
+
+    except Exception as e:
+        print(f"{Colors.RED}Error: {e}{Colors.END}")
+
+def cmd_show(job_id: str):
+    """Show detailed job information"""
+    try:
+        response = requests.get(f"{API_BASE}/jobs/{job_id}")
+        response.raise_for_status()
+        job = response.json()
+
+        print_header(f"Job #{job['id']}: {job['company']['name']}")
+
+        print(f"{Colors.BOLD}Title:{Colors.END} {job['title']}")
+        print(f"{Colors.BOLD}Salary:{Colors.END} ${job['salary_min']:,} - ${job['salary_max']:,}")
+        print(f"{Colors.BOLD}Location:{Colors.END} {job['location']}")
+        print(f"{Colors.BOLD}Remote Type:{Colors.END} {job['remote_type']}")
+        print(f"{Colors.BOLD}Priority:{Colors.END} {job['priority']}")
+        print(f"{Colors.BOLD}Status:{Colors.END} {job['status']}")
+        print(f"{Colors.BOLD}Posted:{Colors.END} {job['posted_date']}")
+        print(f"{Colors.BOLD}URL:{Colors.END} {job['url']}")
+        print()
+
+        if job['applied']:
+            print(f"{Colors.GREEN}✓ Applied{Colors.END} - Application status: {job['application_status']}")
+        else:
+            print(f"{Colors.YELLOW}Not yet applied{Colors.END}")
+
+        print()
+
+        # Show description excerpt
+        print(f"{Colors.BOLD}Description:{Colors.END}")
+        desc = job['job_description'][:300]
+        print(f"{desc}...")
+        print()
+
+    except Exception as e:
+        print(f"{Colors.RED}Error: {e}{Colors.END}")
+
+def cmd_stats():
+    """Show job search statistics"""
+    try:
+        response = requests.get(f"{API_BASE}/jobs/stats/summary")
+        response.raise_for_status()
+        stats = response.json()
+
+        print_header("Job Search Statistics")
+
+        print(f"{Colors.BOLD}Active Jobs:{Colors.END} {stats['active_jobs']}")
+        print(f"{Colors.BOLD}Jobs Applied To:{Colors.END} {stats['jobs_applied_to']}")
+        print(f"{Colors.BOLD}Application Rate:{Colors.END} {stats['application_rate']}")
+        print(f"{Colors.BOLD}Recent (7 days):{Colors.END} {stats['recent_jobs_7d']}")
+        print()
+
+        print(f"{Colors.BOLD}Priority Breakdown:{Colors.END}")
+        for priority, count in stats['priority_breakdown'].items():
+            print(f"  {priority}: {count}")
+        print()
+
+        print(f"{Colors.BOLD}Top Companies:{Colors.END}")
+        for company in stats['top_companies']:
+            print(f"  {company['name']}: {company['count']} job(s)")
+        print()
+
+    except Exception as e:
+        print(f"{Colors.RED}Error: {e}{Colors.END}")
+
+def cmd_apps():
+    """List applications"""
+    try:
+        response = requests.get(f"{API_BASE}/applications/list?limit=20")
+        response.raise_for_status()
+        data = response.json()
+
+        print_header(f"{data['count']} Applications")
+
+        for app in data['applications']:
+            status_color = Colors.GREEN if app['status'] == 'INTERVIEWING' else Colors.BLUE
+            print(f"{status_color}[{app['id']}] [{app['status']:12s}]{Colors.END} {app['company']}")
+            print(f"     {app['job_title']}")
+            print(f"     Applied: {app['applied_date'][:10]}")
+
+            if app['response_received']:
+                print(f"     {Colors.GREEN}✓ Response received{Colors.END}")
+
+            if app['interview_scheduled']:
+                print(f"     {Colors.GREEN}🎯 Interview: {app['interview_scheduled'][:10]}{Colors.END}")
+
+            print()
+
+    except Exception as e:
+        print(f"{Colors.RED}Error: {e}{Colors.END}")
+
+def cmd_health():
+    """Check server health"""
+    try:
+        response = requests.get(HEALTH_URL)
+        response.raise_for_status()
+        health = response.json()
+
+        print_header("System Health Check")
+
+        status_color = Colors.GREEN if health['status'] == 'healthy' else Colors.RED
+        print(f"{Colors.BOLD}Status:{Colors.END} {status_color}{health['status'].upper()}{Colors.END}")
+        print(f"{Colors.BOLD}Version:{Colors.END} {health['version']}")
+
+        if 'real_jobs_tracked' in health:
+            print(f"{Colors.BOLD}Real Jobs Tracked:{Colors.END} {health['real_jobs_tracked']}")
+
+        if 'memory_optimized' in health:
+            print(f"{Colors.BOLD}Memory:{Colors.END} {health['memory_optimized']}")
+
+        print(f"{Colors.BOLD}Automation Level:{Colors.END} {health['automation_level']}")
+        print(f"\n{Colors.BLUE}{health['message']}{Colors.END}\n")
+
+    except Exception as e:
+        print(f"{Colors.RED}Server not responding: {e}{Colors.END}")
+
+def show_help():
+    """Show usage information"""
+    print(f"""
+{Colors.BOLD}Job Search Automation CLI{Colors.END}
+Version: 1.0.0 (Augmentation Layer on v2.1.1 core)
+
+{Colors.BOLD}COMMANDS:{Colors.END}
+
+  {Colors.BOLD}list{Colors.END} [--priority HIGH|MEDIUM|LOW]
+      List all jobs in the system
+
+  {Colors.BOLD}show{Colors.END} <job_id>
+      Show detailed information for a specific job
+
+  {Colors.BOLD}stats{Colors.END}
+      Display job search statistics
+
+  {Colors.BOLD}apps{Colors.END}
+      List all applications
+
+  {Colors.BOLD}health{Colors.END}
+      Check system health and version
+
+  {Colors.BOLD}help{Colors.END}
+      Show this help message
+
+{Colors.BOLD}EXAMPLES:{Colors.END}
+
+  job-search list
+  job-search list --priority HIGH
+  job-search show 8
+  job-search stats
+  job-search apps
+  job-search health
+
+{Colors.BOLD}NOTE:{Colors.END}
+This CLI tool uses the existing API at {API_BASE}
+No changes are made to the core system (v2.1.1)
+
+For full API documentation: http://localhost:8899/docs
+""")
+
+def main():
+    """Main entry point"""
+    if len(sys.argv) < 2:
+        show_help()
+        return
+
+    command = sys.argv[1]
+
+    if command == "list":
+        priority = None
+        if len(sys.argv) > 2 and sys.argv[2] == "--priority" and len(sys.argv) > 3:
+            priority = sys.argv[3]
+        cmd_list(priority)
+
+    elif command == "show":
+        if len(sys.argv) < 3:
+            print(f"{Colors.RED}Usage: job-search show <job_id>{Colors.END}")
+            return
+        cmd_show(sys.argv[2])
+
+    elif command == "stats":
+        cmd_stats()
+
+    elif command == "apps":
+        cmd_apps()
+
+    elif command == "health":
+        cmd_health()
+
+    elif command == "help" or command == "--help" or command == "-h":
+        show_help()
+
+    else:
+        print(f"{Colors.RED}Unknown command: {command}{Colors.END}")
+        print(f"Run '{Colors.BOLD}job-search help{Colors.END}' for usage information")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(f"\n{Colors.YELLOW}Interrupted{Colors.END}")
+        sys.exit(0)
+    except Exception as e:
+        print(f"{Colors.RED}Error: {e}{Colors.END}")
+        sys.exit(1)
