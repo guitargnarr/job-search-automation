@@ -27,14 +27,13 @@ This platform transforms job searching from a manual, time-consuming process int
 - **Format Validation**: Ensures ATS-readable structure
 - **Response Rate Improvement**: 3-5x higher than baseline
 
-#### 3. LinkedIn Automation (`backend/services/linkedin_service.py`)
-- **Employee Discovery**: Find decision-makers at target companies
-- **Connection Campaigns**: Personalized outreach at scale
-- **Anti-Detection**: Human-like behavior patterns
-- **Relationship Tracking**: Monitor networking effectiveness
-- **Warm Leads Generated**: 50+ connections per week
+#### 3. ~~LinkedIn Automation~~ (DEPRECATED)
+- **Status**: Removed from active codebase
+- **Files**: Preserved in `backend/deprecated/` folder
+- **Reason**: Focus on more reliable automation features
+- **Alternative**: Manual networking recommended
 
-### 📊 API Architecture (37 Endpoints Validated)
+### 📊 API Architecture (30 Endpoints Active, 7 Deprecated)
 
 #### Email Module (4 endpoints)
 ```
@@ -52,12 +51,13 @@ POST /api/v1/ats/score            - Calculate ATS score
 POST /api/v1/ats/generate-optimized - Create tailored resume
 ```
 
-#### LinkedIn Module (7 endpoints)
+#### ~~LinkedIn Module~~ (DEPRECATED - 7 endpoints removed)
 ```
-POST /api/v1/linkedin/campaign        - Run targeted campaign
-POST /api/v1/linkedin/search-employees - Find employees
-POST /api/v1/linkedin/connect         - Send connections
-GET  /api/v1/linkedin/outreach/{id}   - Get campaign status
+# These endpoints have been removed:
+# POST /api/v1/linkedin/campaign
+# POST /api/v1/linkedin/search-employees
+# POST /api/v1/linkedin/connect
+# GET  /api/v1/linkedin/outreach/{id}
 ```
 
 #### Jobs Module (6 endpoints)
@@ -135,7 +135,6 @@ Backend:    FastAPI (async/await throughout)
 Database:   SQLAlchemy with async sessions
 Models:     Pydantic for validation
 Email:      Gmail API with OAuth 2.0
-LinkedIn:   Playwright for anti-detection
 NLP:        spaCy + scikit-learn
 Logging:    Structured JSON logging
 ```
@@ -283,6 +282,19 @@ Logging:    Structured JSON logging
 - **Database URL Conflicts**: Resolved PostgreSQL environment variable interference
 - **Python Path Issues**: Worked around system Python alias problems
 
+### 📋 Latest Changes (October 5, 2025)
+
+#### Deprecation Updates
+- **LinkedIn Automation**: Fully removed from active codebase
+  - Files moved to `backend/deprecated/` for historical reference
+  - 7 endpoints removed from API
+  - Configuration settings deprecated
+
+- **OpenAI Integration**: Completely deprecated
+  - API key and model settings removed
+  - All AI generation features disabled
+  - Focus on deterministic ATS optimization with spaCy/scikit-learn
+
 ### ⚠️ Current Limitations
 
 #### Configuration Required
@@ -291,14 +303,6 @@ Logging:    Structured JSON logging
    - Update `GMAIL_CREDENTIALS_FILE` in .env
    - Complete OAuth flow for token generation
 
-2. **LinkedIn Credentials**: Not set up
-   - Need valid LinkedIn email/password
-   - Configure in .env file
-   - Set up anti-detection parameters
-
-3. **OpenAI API Key**: Optional but recommended
-   - Required for AI-powered features
-   - Enhances resume optimization
 
 #### Operational Constraints
 - **Port Conflicts**: Multiple attempted server instances on ports 8000-8002, 8888
@@ -345,8 +349,6 @@ Logging:    Structured JSON logging
 ### Prerequisites
 - Python 3.8+
 - Gmail account with API access
-- LinkedIn account (for automation)
-- OpenAI API key (optional)
 
 ### Installation (Tested on macOS)
 ```bash
@@ -391,10 +393,10 @@ open http://localhost:8899/docs
 - Architecture: docs/ARCHITECTURE.md
 
 ### Troubleshooting
-- **Gmail not connecting**: Check OAuth credentials
-- **LinkedIn blocked**: Adjust delay settings
-- **ATS score low**: Add more keywords
-- **No responses**: Verify email scanning
+- **Gmail not connecting**: Check OAuth credentials and token file
+- **ATS score low**: Add more keywords from job description
+- **No responses**: Verify email scanning is running
+- **Database issues**: Ensure DATABASE_URL is unset for SQLite
 
 ### Future Contributions
 - Star the repository
