@@ -3,18 +3,16 @@ Job Search Automation Platform - Main API
 Real automation, not just file copying
 """
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
-import logging
-from typing import Optional
 
 # Import routers
 from backend.api.v1 import (
     applications,
     email,
-    linkedin,
+    # linkedin,  # DEPRECATED - LinkedIn automation removed
     jobs,
     analytics,
     ats,
@@ -22,12 +20,12 @@ from backend.api.v1 import (
 )
 
 # Import core services
-from backend.core.config import settings
 from backend.core.database import engine, Base
 from backend.core.logging import setup_logging
 
 # Setup logging
 logger = setup_logging()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -68,6 +66,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # Health check endpoint
 @app.get("/health")
 async def health_check():
@@ -92,11 +91,12 @@ app.include_router(
     tags=["email"]
 )
 
-app.include_router(
-    linkedin.router,
-    prefix="/api/v1/linkedin",
-    tags=["linkedin"]
-)
+# LinkedIn router deprecated - automation features removed
+# app.include_router(
+#     linkedin.router,
+#     prefix="/api/v1/linkedin",
+#     tags=["linkedin"]
+# )
 
 app.include_router(
     jobs.router,
@@ -122,6 +122,7 @@ app.include_router(
     tags=["follow-ups"]
 )
 
+
 @app.get("/")
 async def root():
     """Root endpoint with system information"""
@@ -131,9 +132,9 @@ async def root():
         "features": {
             "email_tracking": "active",
             "ats_optimization": "active",
-            "linkedin_automation": "active",
+            "linkedin_automation": "deprecated",  # LinkedIn features removed
             "job_aggregation": "active",
-            "ai_generation": "active",
+            "ai_generation": "deprecated",  # OpenAI features removed
             "follow_up_system": "active"
         },
         "automation_percentage": 75,

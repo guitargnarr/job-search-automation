@@ -5,8 +5,8 @@ Configuration management for the automation platform
 from pydantic_settings import BaseSettings
 from pydantic import Field
 from typing import Optional, List
-import os
 from pathlib import Path
+
 
 class Settings(BaseSettings):
     """Application settings"""
@@ -55,16 +55,16 @@ class Settings(BaseSettings):
             "https://www.googleapis.com/auth/gmail.labels"
         ]
 
-    # LinkedIn Settings
-    LINKEDIN_EMAIL: Optional[str] = Field(default=None, env="LINKEDIN_EMAIL")
-    LINKEDIN_PASSWORD: Optional[str] = Field(default=None, env="LINKEDIN_PASSWORD")
-    LINKEDIN_HEADLESS: bool = Field(default=True, env="LINKEDIN_HEADLESS")
-    LINKEDIN_MAX_CONNECTIONS_PER_DAY: int = 20
+    # LinkedIn Settings - DEPRECATED
+    # LINKEDIN_EMAIL: Optional[str] = Field(default=None, env="LINKEDIN_EMAIL")
+    # LINKEDIN_PASSWORD: Optional[str] = Field(default=None, env="LINKEDIN_PASSWORD")
+    # LINKEDIN_HEADLESS: bool = Field(default=True, env="LINKEDIN_HEADLESS")
+    # LINKEDIN_MAX_CONNECTIONS_PER_DAY: int = 20
 
-    # OpenAI Settings
-    OPENAI_API_KEY: Optional[str] = Field(default=None, env="OPENAI_API_KEY")
-    OPENAI_MODEL: str = "gpt-4-turbo-preview"
-    OPENAI_TEMPERATURE: float = 0.7
+    # OpenAI Settings - DEPRECATED
+    # OPENAI_API_KEY: Optional[str] = Field(default=None, env="OPENAI_API_KEY")
+    # OPENAI_MODEL: str = "gpt-4-turbo-preview"
+    # OPENAI_TEMPERATURE: float = 0.7
 
     # Job Search Settings
     JOB_SEARCH_KEYWORDS: str = Field(
@@ -114,6 +114,7 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = True
         extra = "ignore"  # Ignore extra fields from .env
+
 
 # Create settings instance
 settings = Settings()
