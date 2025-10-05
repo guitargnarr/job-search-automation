@@ -1,0 +1,74 @@
+MATTHEW DAVID SCOTT
+Louisville, KY | 502-345-0525 | matthewdscott7@gmail.com | linkedin.com/in/mscott77/
+
+SENIOR BUSINESS ANALYST | HEALTHCARE ANALYTICS & QUALITY EVALUATION SPECIALIST
+Data-Driven Decision Making | Medicare/CMS Compliance | SQL & API Testing | Stakeholder Leadership
+
+Strategic business analyst with 15+ years driving data-informed decision making across healthcare compliance, quality evaluation, and stakeholder leadership. Proven expertise in Medicare/CMS regulatory compliance, SQL-based data validation, analytics-driven testing, and cross-functional project management at Fortune 50 scale.
+
+================================================================================
+PROFESSIONAL EXPERIENCE
+================================================================================
+
+SENIOR RISK MANAGEMENT PROFESSIONAL II, BUSINESS ANALYST
+HUMANA, INC., Louisville, KY (Hybrid/Remote)
+November 2022 – August 2025
+
+Medicare Compliance & Quality Assurance Business Analyst leading regulatory compliance, data validation, and stakeholder coordination for Humana's Medicare platform serving millions of consumers. Subject matter expert (SME) for CMS regulations with responsibility for cross-functional project leadership, SQL-based data analysis, and executive reporting.
+
+Career Progression:
+• Senior Risk Management Professional, May 2021 – Oct 2022
+• Risk Management Professional 2, Sep 2017 – Apr 2021
+• Risk Management Analyst, Jan 2016 – Aug 2017
+
+Key Achievements:
+• Led e-Commerce Acceleration and Data Modernization projects with ZERO critical or high defects through comprehensive testing and stakeholder coordination
+• Orchestrated Annual Enrollment Period (AEP) web marketing preparation and execution—organization's highest-revenue period—ensuring seamless launch and CMS compliance
+• Achieved 100% on-time delivery for 100+ time-sensitive Medicare Member Annual Communications (MAC) PDFs for 3 consecutive years as DRI
+• Reviewed 400+ page CMS Final Rule guidance annually to identify potential risk areas and strategic implications, translating regulatory requirements into actionable business strategies
+• Delivered executive-level monthly scorecards to senior leadership detailing team performance, trend analysis, and compliance metrics, driving data-informed strategic decisions
+• Developed analytics-based testing methodology targeting highest-impact customer segments, creating test experiments that continually refined quality processes
+• Built and maintained trusted relationships across IT, Legal, Regulatory & Compliance, and business units at enterprise scale, coordinating cross-functional engagements and managing third-party audit processes
+
+================================================================================
+
+ACCOUNT EXECUTIVE
+MIGHTILY, Louisville, KY
+July 2015 – December 2016
+
+Client Relationship Manager and Strategic Account Lead managing 10+ digital marketing retainer accounts representing $40k in monthly recurring revenue. Served as intermediary between client project needs and internal technical teams across diverse industries, leading project delivery and revenue growth initiatives. Promoted from Rich Content Developer (2012-2015).
+
+Key Achievements:
+• Managed 10+ digital marketing retainer accounts accounting for $40k in monthly revenue with metric-based reporting and strategic recommendations
+• Secured $50k website deal through consultative selling and managed primary account executive responsibilities for contracts ranging from $500k to $3M
+• Created 60 Google Map location pins for Trilogy Health Services, significantly improving web presence and local market reach
+• Launched Google AdWords display campaigns using A/B testing to maximize ad spend efficiency and ROI
+
+================================================================================
+EDUCATION & CERTIFICATION
+================================================================================
+
+BACHELOR OF SCIENCE IN COMMUNICATION | University of Louisville, Expected 2025
+Dean's List, Fall 2013
+
+Google Ads Certified
+
+================================================================================
+CORE COMPETENCIES & TECHNICAL SKILLS
+================================================================================
+
+HEALTHCARE & COMPLIANCE
+Medicare/CMS Regulations | Regulatory Compliance | Risk Assessment | Quality Assurance |
+ESP (Enterprise Solution Point) | EIP (Enterprise Integration Platform) | ETDM (Enterprise Test Data Management) | Healthcare Domain Expertise
+
+DATA & ANALYTICS
+SQL (MS SQL Server, MySQL) | API Testing & Validation | Analytics-Based Testing |
+A/B Testing & Optimization | Data Validation | Trend Analysis | Performance Metrics
+
+LEADERSHIP & PROJECT MANAGEMENT
+Stakeholder Engagement | Cross-Functional Leadership | Agile/SDLC | Sprint Planning |
+User Stories & UAT (User Acceptance Testing) | Executive Reporting | Vendor Management | Team Mentoring
+
+TECHNICAL TOOLS & PLATFORMS
+JIRA | SharePoint | MS Teams | Slack | Oracle | Braze | Firebase | Splunk | Applitools |
+Beyond Compare | WordPress | Power Apps | Power Automate

@@ -1,0 +1,110 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+config/api_keys.env
+*_credentials.json
+*.key
+*.pem
+
+# Personal/Sensitive Information
+*_SSN*
+*_private*
+*_confidential*
+personal_info.txt
+salary_history.txt
+references_with_contact.txt
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+tracking/database/*.backup
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+
+# Application Generated Files
+applications/*/temp/
+tracking/exports/*.xlsx
+tracking/exports/*.csv
+tracking/reports/*.pdf
+interview_prep/practice_recordings/*.mp4
+interview_prep/practice_recordings/*.mp3
+
+# Archive folders (but track structure)
+Archive_Old_Versions/*
+!Archive_Old_Versions/.gitkeep
+
+# Node.js (if you add web dashboard)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+# Output directories
+dist/
+build/
+output/
+exports/
+
+# Backup files
+*.backup
+*.old
+backup/
+
+# Large media files (optional - uncomment if needed)
+# *.pdf
+# *.mp4
+# *.mp3
+# *.zip
+# *.rar
+
+# Custom patterns for your setup
+Louisville_Job_Tracker_*.csv
+!Louisville_Job_Tracker.csv
+*_DRAFT.*
+*_TEST.*
