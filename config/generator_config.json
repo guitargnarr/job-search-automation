@@ -1,0 +1,50 @@
+{
+  "resume_templates": {
+    "1": "Full comprehensive - general purpose",
+    "2": "Healthcare/clinical focus",
+    "3": "AI/Tech transition emphasis",
+    "4": "Business analysis focus",
+    "5": "General purpose - streamlined"
+  },
+  "cover_letter_tiers": {
+    "1": "Healthcare and clinical positions",
+    "2": "General business analyst roles",
+    "3": "AI/Tech transition positions"
+  },
+  "keyword_weights": {
+    "exact_match": 3,
+    "stem_match": 2,
+    "synonym_match": 1
+  },
+  "skills_categories": {
+    "technical": [
+      "Python",
+      "SQL",
+      "data analysis",
+      "Excel",
+      "Tableau",
+      "Power BI"
+    ],
+    "healthcare": [
+      "Epic",
+      "clinical",
+      "patient care",
+      "healthcare",
+      "medical"
+    ],
+    "business": [
+      "business analysis",
+      "requirements",
+      "stakeholder",
+      "project management"
+    ],
+    "ai_ml": [
+      "AI",
+      "machine learning",
+      "LLM",
+      "NLP",
+      "data science",
+      "artificial intelligence"
+    ]
+  }
+}

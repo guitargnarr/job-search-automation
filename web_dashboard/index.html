@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Automation Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Job Search Command Center</h1>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-value" id="total-jobs">60</span>
+                    <span class="stat-label">Total Jobs</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="applications-sent">0</span>
+                    <span class="stat-label">Applications Sent</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="response-rate">0%</span>
+                    <span class="stat-label">Response Rate</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="interviews">0</span>
+                    <span class="stat-label">Interviews</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="searchJobs()">
+                        🔍 Search New Jobs
+                    </button>
+                    <button class="btn btn-success" onclick="generatePackage()">
+                        📦 Generate Application
+                    </button>
+                    <button class="btn btn-warning" onclick="bulkApply()">
+                        🚀 Bulk Apply (High Priority)
+                    </button>
+                    <button class="btn btn-info" onclick="refreshAnalytics()">
+                        📊 Refresh Analytics
+                    </button>
+                </div>
+            </section>
+
+            <!-- Job Search -->
+            <section class="job-search">
+                <h2>Job Search</h2>
+                <form id="search-form" onsubmit="performSearch(event)">
+                    <input type="text" id="search-keywords" placeholder="Keywords (e.g., Business Analyst)" required>
+                    <input type="text" id="search-location" placeholder="Location (e.g., Louisville, KY)" value="Louisville, KY">
+                    <select id="search-platforms" multiple>
+                        <option value="linkedin" selected>LinkedIn</option>
+                        <option value="indeed" selected>Indeed</option>
+                        <option value="glassdoor" selected>Glassdoor</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <div id="search-results" class="results-container"></div>
+            </section>
+
+            <!-- High Priority Jobs -->
+            <section class="priority-jobs">
+                <h2>High Priority Jobs</h2>
+                <div id="priority-list" class="job-list">
+                    <div class="job-card">
+                        <h3>Strategic Solutions Analyst</h3>
+                        <p>Waystar | Louisville, KY</p>
+                        <div class="job-actions">
+                            <button onclick="generateForJob(11)" class="btn btn-sm">Generate Package</button>
+                            <button onclick="analyzeJob(11)" class="btn btn-sm btn-secondary">Analyze Fit</button>
+                        </div>
+                    </div>
+                    <div class="job-card">
+                        <h3>Business Analyst</h3>
+                        <p>Optum (UnitedHealth Group) | Remote</p>
+                        <div class="job-actions">
+                            <button onclick="generateForJob(17)" class="btn btn-sm">Generate Package</button>
+                            <button onclick="analyzeJob(17)" class="btn btn-sm btn-secondary">Analyze Fit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Tracking -->
+            <section class="application-tracking">
+                <h2>Application Pipeline</h2>
+                <canvas id="pipeline-chart"></canvas>
+            </section>
+
+            <!-- Follow-ups -->
+            <section class="follow-ups">
+                <h2>Upcoming Follow-ups</h2>
+                <div id="follow-up-list" class="follow-up-container">
+                    <div class="follow-up-item">
+                        <span class="follow-up-date">Oct 12</span>
+                        <span class="follow-up-company">No follow-ups scheduled</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics -->
+            <section class="analytics">
+                <h2>Performance Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Application Velocity</h3>
+                        <canvas id="velocity-chart"></canvas>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Response by Template</h3>
+                        <canvas id="template-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="status-message" class="status-message"></div>
+
+        <!-- Modal for Results -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

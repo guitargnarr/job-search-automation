@@ -1,0 +1,143 @@
+{
+  "server": {
+    "name": "job-search-automation",
+    "version": "1.0.0",
+    "description": "MCP server for job search automation tools",
+    "port": 5000,
+    "host": "localhost",
+    "auto_start": true
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "../tracking/database/job_tracker.db",
+    "backup_interval": 86400
+  },
+  "tools": {
+    "generate_application": {
+      "enabled": true,
+      "timeout": 30000,
+      "max_concurrent": 5
+    },
+    "search_jobs": {
+      "enabled": true,
+      "platforms": {
+        "linkedin": {
+          "enabled": true,
+          "rate_limit": 60,
+          "api_key": ""
+        },
+        "indeed": {
+          "enabled": true,
+          "rate_limit": 100,
+          "api_key": ""
+        },
+        "glassdoor": {
+          "enabled": true,
+          "rate_limit": 50,
+          "api_key": ""
+        }
+      }
+    },
+    "analyze_job_fit": {
+      "enabled": true,
+      "ai_model": "gpt-4",
+      "scoring_weights": {
+        "skills_match": 0.4,
+        "experience_match": 0.3,
+        "industry_match": 0.2,
+        "location_match": 0.1
+      }
+    },
+    "track_application": {
+      "enabled": true,
+      "auto_reminders": true,
+      "reminder_intervals": [3, 7, 14]
+    },
+    "bulk_apply": {
+      "enabled": true,
+      "max_batch_size": 10,
+      "delay_between_applications": 2000
+    }
+  },
+  "notifications": {
+    "email": {
+      "enabled": false,
+      "smtp_host": "",
+      "smtp_port": 587,
+      "from_address": ""
+    },
+    "desktop": {
+      "enabled": true
+    }
+  },
+  "analytics": {
+    "track_performance": true,
+    "export_format": "json",
+    "export_interval": 86400
+  },
+  "security": {
+    "api_key_required": false,
+    "cors_origins": ["http://localhost:*"],
+    "rate_limiting": {
+      "enabled": true,
+      "max_requests_per_minute": 60
+    }
+  },
+  "workflow_presets": {
+    "quick_apply": {
+      "steps": ["generate_application"],
+      "description": "Quick single application generation"
+    },
+    "priority_blast": {
+      "steps": ["bulk_apply"],
+      "parameters": {"priority": "HIGH", "limit": 10},
+      "description": "Apply to all high priority jobs"
+    },
+    "full_pipeline": {
+      "steps": [
+        "search_jobs",
+        "analyze_job_fit",
+        "generate_application",
+        "track_application"
+      ],
+      "description": "Complete job search and application workflow"
+    },
+    "daily_routine": {
+      "steps": [
+        "search_jobs",
+        "get_analytics",
+        "check_follow_ups"
+      ],
+      "parameters": {"days_posted": 1},
+      "description": "Daily job search routine"
+    },
+    "interview_prep": {
+      "steps": [
+        "analyze_job_fit",
+        "generate_interview_questions",
+        "create_research_notes"
+      ],
+      "description": "Prepare for upcoming interview"
+    }
+  },
+  "application_strategies": {
+    "healthcare": {
+      "resume_template": 2,
+      "cover_letter_tier": 1,
+      "keywords": ["Epic", "clinical", "patient care", "healthcare"],
+      "description": "Healthcare-focused application strategy"
+    },
+    "tech": {
+      "resume_template": 3,
+      "cover_letter_tier": 3,
+      "keywords": ["Python", "AI", "machine learning", "data"],
+      "description": "Tech/AI transition strategy"
+    },
+    "business": {
+      "resume_template": 4,
+      "cover_letter_tier": 2,
+      "keywords": ["analysis", "stakeholder", "requirements", "project"],
+      "description": "Business analyst focus"
+    }
+  }
+}

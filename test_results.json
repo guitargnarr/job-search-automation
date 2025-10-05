@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-10-05T07:42:12.472221",
+  "passed": [
+    "Python environment",
+    "File: mcp_server/job_search_server.py",
+    "File: automation/generators/generate_application_package.py",
+    "File: web_dashboard/index.html",
+    "File: web_dashboard/dashboard.js",
+    "File: web_dashboard/styles.css",
+    "File: launch_job_search.sh",
+    "File: start_server.sh",
+    "File: stop_server.sh",
+    "File: tracking/database/migrate_csv_to_db.py",
+    "File: mcp_server/config.json",
+    "Database validation",
+    "Dependency: sqlite3",
+    "Dependency: json",
+    "Dependency: pathlib",
+    "Dependency: datetime",
+    "ApplicationPackageGenerator import",
+    "Web dashboard",
+    "Performance benchmarks",
+    "Configuration validation"
+  ],
+  "failed": [
+    "Package generation"
+  ],
+  "warnings": [
+    "mcp not installed",
+    "aiohttp not installed",
+    "flask not installed",
+    "MCP Server not available (MCP not installed)"
+  ],
+  "performance": {
+    "db_query_high_priority": "0.31 ms"
+  },
+  "statistics": {
+    "python_version": "3.9.6",
+    "files_validated": 10,
+    "total_jobs": 60,
+    "high_priority_jobs": 16,
+    "workflow_presets": 5
+  },
+  "summary": {
+    "passed": 20,
+    "failed": 1,
+    "warnings": 4,
+    "total_tests": 21
+  }
+}
