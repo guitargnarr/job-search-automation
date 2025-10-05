@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     # API Settings
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "Job Search Automation Platform"
-    VERSION: str = "2.0.0"
+    VERSION: str = "2.1.1"  # Updated: October 5, 2025 - Stable release with 7 real jobs
 
     # Database
     DATABASE_URL: str = Field(

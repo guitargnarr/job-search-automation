@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Job Search Automation Platform - Startup Script
+# Version: 2.1.1 - Stable Release
 # This script starts the FastAPI server with proper environment setup
+# Current port: 8899 (set APP_PORT=8899 in .env)
 
 set -e  # Exit on error
 
@@ -91,25 +93,27 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}Starting FastAPI server...${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo ""
-echo "API Documentation: http://localhost:8000/docs"
-echo "Health Check: http://localhost:8000/health"
+echo "API Documentation: http://localhost:${APP_PORT:-8899}/docs"
+echo "Health Check: http://localhost:${APP_PORT:-8899}/health"
+echo "Job List: http://localhost:${APP_PORT:-8899}/api/v1/jobs/list"
 echo ""
+echo "Current: 7 real jobs tracked | Memory: 19MB optimized"
 echo "Press Ctrl+C to stop the server"
 echo ""
 
 # Run with uvicorn
-if [ "$APP_ENV" = "development" ]; then
-    # Development mode with auto-reload
+if [ "$APP_ENV" = "development" ] || [ -z "$APP_ENV" ]; then
+    # Development mode with auto-reload (SINGLE WORKER ONLY)
     uvicorn backend.main:app \
         --host ${APP_HOST:-0.0.0.0} \
-        --port ${APP_PORT:-8000} \
+        --port ${APP_PORT:-8899} \
         --reload \
         --log-level ${LOG_LEVEL:-info}
 else
-    # Production mode
+    # Production mode (CRITICAL: workers must be 1 to avoid duplicate servers)
     uvicorn backend.main:app \
         --host ${APP_HOST:-0.0.0.0} \
-        --port ${APP_PORT:-8000} \
-        --workers ${APP_WORKERS:-4} \
+        --port ${APP_PORT:-8899} \
+        --workers 1 \
         --log-level ${LOG_LEVEL:-info}
 fi

@@ -57,6 +57,11 @@ tracking/database/*.backup
 *.swp
 *.swo
 *~
+tmp/
+temp/
+.pytest_cache/
+.mypy_cache/
+*.pyc
 
 # IDE and Editor Files
 .vscode/
@@ -108,3 +113,12 @@ Louisville_Job_Tracker_*.csv
 !Louisville_Job_Tracker.csv
 *_DRAFT.*
 *_TEST.*
+
+# System-specific patterns (v2.1.1)
+*.pickle
+*token.json
+*token.pickle
+storage/
+.cache/
+playwright-report/
+test-results/
