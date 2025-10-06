@@ -42,28 +42,45 @@ class EmailAutomationService:
         """Initialize Gmail API connection"""
         creds = None
 
-        # Token file stores the user's access and refresh tokens
-        token_path = Path(settings.GMAIL_TOKEN_FILE)
+        # Try to determine token file path
+        token_file = settings.GMAIL_TOKEN_FILE if settings.GMAIL_TOKEN_FILE else "gmail_token.json"
+        token_path = Path(token_file)
 
         if token_path.exists():
-            creds = Credentials.from_authorized_user_file(
-                str(token_path),
-                settings.GMAIL_SCOPES
-            )
+            try:
+                # Get scopes list
+                scopes = settings.gmail_scopes_list
+                creds = Credentials.from_authorized_user_file(
+                    str(token_path),
+                    scopes
+                )
+                logger.info(f"Loaded existing Gmail token from: {token_path}")
+            except Exception as e:
+                logger.error(f"Error loading token file: {e}")
+                creds = None
 
         # If there are no (valid) credentials available, let the user log in
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
-                if not Path(settings.GMAIL_CREDENTIALS_FILE).exists():
-                    logger.error(f"Gmail credentials file not found: {settings.GMAIL_CREDENTIALS_FILE}")
+                try:
+                    creds.refresh(Request())
+                    logger.info("Refreshed expired Gmail token")
+                except Exception as e:
+                    logger.error(f"Token refresh failed: {e}")
+                    creds = None
+
+            if not creds:
+                # Need credentials file for OAuth flow
+                creds_file = settings.GMAIL_CREDENTIALS_FILE if settings.GMAIL_CREDENTIALS_FILE else None
+                if not creds_file or not Path(creds_file).exists():
+                    logger.error(f"Gmail credentials file not found: {creds_file}")
                     logger.info("Please set up Gmail API credentials first")
+                    logger.info("Run: python setup_gmail_simple.py")
                     return
 
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    settings.GMAIL_CREDENTIALS_FILE,
-                    settings.GMAIL_SCOPES
+                    creds_file,
+                    settings.gmail_scopes_list
                 )
                 creds = flow.run_local_server(port=0)
 

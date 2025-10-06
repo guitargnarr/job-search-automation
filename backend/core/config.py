@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     # API Settings
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "Job Search Automation Platform"
-    VERSION: str = "2.1.1"  # Updated: October 5, 2025 - Stable release with 7 real jobs
+    VERSION: str = "2.2.0"  # Updated: October 6, 2025 - Gmail automation operational
 
     # Database
     DATABASE_URL: str = Field(
@@ -115,7 +115,7 @@ class Settings(BaseSettings):
     LOG_FILE: str = "job_automation.log"
 
     class Config:
-        env_file = ".env"
+        env_file = "/Users/matthewscott/Desktop/Job_Search/.env"
         case_sensitive = True
         extra = "ignore"  # Ignore extra fields from .env
 
