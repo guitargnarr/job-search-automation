@@ -1,0 +1,94 @@
+digraph JobSearchAutomation {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // Title
+    label="Job Search Automation Platform - System Architecture\nv2.2.0 - October 7, 2025";
+    fontsize=16;
+    fontname="Arial Bold";
+
+    // Color scheme
+    node [fillcolor="#E8F4F8"];
+
+    // User Interface Layer
+    subgraph cluster_ui {
+        label="User Interface";
+        style=filled;
+        fillcolor="#D4E6F1";
+        CLI [label="CLI Commands\n(run_application.py)", fillcolor="#AED6F1"];
+        API [label="REST API\n(Port 8899)", fillcolor="#AED6F1"];
+        Tests [label="Test Scripts", fillcolor="#AED6F1"];
+    }
+
+    // Application Layer
+    subgraph cluster_app {
+        label="FastAPI Application Server";
+        style=filled;
+        fillcolor="#D5F4E6";
+
+        Jobs [label="Jobs API\n/api/v1/jobs", fillcolor="#ABEBC6"];
+        Apps [label="Applications API\n/api/v1/applications", fillcolor="#ABEBC6"];
+        Email [label="Email API\n/api/v1/email", fillcolor="#ABEBC6"];
+        Analytics [label="Analytics API\n/api/v1/analytics", fillcolor="#ABEBC6"];
+        ATS [label="ATS API\n/api/v1/ats", fillcolor="#ABEBC6"];
+        Followups [label="Follow-ups API\n/api/v1/follow-ups", fillcolor="#ABEBC6"];
+    }
+
+    // Service Layer
+    subgraph cluster_services {
+        label="Service Layer";
+        style=filled;
+        fillcolor="#FADBD8";
+
+        EmailService [label="Email Service\n(Gmail API)", fillcolor="#F5B7B1"];
+        ATSService [label="ATS Optimizer\n(NLP/spaCy)", fillcolor="#F5B7B1"];
+        DocGen [label="Document Generator\n(python-docx)", fillcolor="#F5B7B1"];
+        Scheduler [label="Scheduler\n(APScheduler)", fillcolor="#F5B7B1"];
+    }
+
+    // Data Layer
+    subgraph cluster_data {
+        label="Data Layer (SQLite)";
+        style=filled;
+        fillcolor="#FCF3CF";
+
+        DB [label="job_search.db\n71 jobs | 7 applications\n34 emails | 53 companies", fillcolor="#F9E79F", shape=cylinder];
+    }
+
+    // External Systems
+    subgraph cluster_external {
+        label="External Integrations";
+        style=filled;
+        fillcolor="#EBDEF0";
+
+        Gmail [label="Gmail API", fillcolor="#D7BDE2", shape=ellipse];
+        Web [label="Web Search", fillcolor="#D7BDE2", shape=ellipse];
+        Docs [label="Document Output\n(.docx/.pdf)", fillcolor="#D7BDE2", shape=ellipse];
+    }
+
+    // Connections
+    CLI -> Jobs;
+    CLI -> Apps;
+    API -> {Jobs Apps Email Analytics ATS Followups};
+    Tests -> API;
+
+    Jobs -> DB;
+    Apps -> DB;
+    Email -> EmailService;
+    Analytics -> DB;
+    ATS -> ATSService;
+    Followups -> DB;
+
+    EmailService -> Gmail;
+    EmailService -> DB;
+    ATSService -> DocGen;
+    DocGen -> Docs;
+    Scheduler -> DB;
+
+    // Metrics box
+    Metrics [label="System Metrics\n━━━━━━━━━━━━\n• 75% Automation\n• 25% Response Rate\n• 45 min saved/app\n• 100% uptime",
+             shape=note,
+             fillcolor="#F0F0F0",
+             style="filled"];
+}

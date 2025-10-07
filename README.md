@@ -1,8 +1,14 @@
-# Job Search Automation Platform
+# 🚀 Job Search Automation Platform
 
-**Version 2.1.0** | **Status: Operational** | **Last Updated: October 5, 2025**
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://github.com/matthewscott/job-search-automation)
+[![Python](https://img.shields.io/badge/python-3.9%2B-green.svg)](https://www.python.org/downloads/)
+[![Status](https://img.shields.io/badge/status-operational-success.svg)](http://localhost:8899/health)
+[![Applications](https://img.shields.io/badge/applications-7-yellow.svg)](http://localhost:8899/api/v1/applications/list)
+[![Jobs](https://img.shields.io/badge/jobs_tracked-71-orange.svg)](http://localhost:8899/api/v1/jobs/list)
 
-A comprehensive, API-driven job search automation system that transforms manual job hunting into an intelligent, data-driven process. This platform provides real automation—not just file organization—to save 45+ minutes per application while improving response rates by 3-5x.
+**Version 2.2.0** | **Status: Operational** | **Last Updated: October 7, 2025**
+
+> A comprehensive, API-driven job search automation system that transforms manual job hunting into an intelligent, data-driven process. This platform provides real automation—not just file organization—to save 45+ minutes per application while improving response rates by 3-5x.
 
 ## 🎯 What This System Does
 

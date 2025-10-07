@@ -32,6 +32,8 @@ htmlcov/
 .env.*.local
 config/api_keys.env
 *_credentials.json
+client_secret*.json
+gmail_credentials*.json
 *.key
 *.pem
 
