@@ -4,7 +4,7 @@ Follow-up System API endpoints for automated reminders and scheduling
 
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, func, and_, or_, update
+from sqlalchemy import select, func, and_, or_, update, case
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta, date
 from pydantic import BaseModel
@@ -112,7 +112,7 @@ async def get_scheduled_followups(
             Company, Job.company_id == Company.id
         ).where(
             and_(
-                FollowUp.completed == False,
+                FollowUp.sent == False,
                 or_(
                     FollowUp.scheduled_date <= cutoff_date,
                     and_(
@@ -295,7 +295,7 @@ async def update_follow_up(
         if update_data.message:
             follow_up.message = update_data.message
         if update_data.completed is not None:
-            follow_up.completed = update_data.completed
+            follow_up.sent = update_data.completed
         if update_data.sent_date:
             follow_up.sent_date = update_data.sent_date
 
@@ -329,7 +329,7 @@ async def complete_follow_up(
         if not follow_up:
             raise HTTPException(status_code=404, detail="Follow-up not found")
 
-        follow_up.completed = True
+        follow_up.sent = True
         follow_up.sent_date = datetime.now()
         if notes:
             follow_up.message = f"{follow_up.message}\n\nCompletion notes: {notes}"
@@ -467,7 +467,7 @@ async def get_follow_up_analytics(db: AsyncSession = Depends(get_db)):
 
         # Completed follow-ups
         completed_query = select(func.count(FollowUp.id)).where(
-            FollowUp.completed == True
+            FollowUp.sent == True
         )
         completed_result = await db.execute(completed_query)
         completed_count = completed_result.scalar() or 0
@@ -475,7 +475,7 @@ async def get_follow_up_analytics(db: AsyncSession = Depends(get_db)):
         # Overdue follow-ups
         overdue_query = select(func.count(FollowUp.id)).where(
             and_(
-                FollowUp.completed == False,
+                FollowUp.sent == False,
                 FollowUp.scheduled_date < datetime.now()
             )
         )
@@ -486,7 +486,7 @@ async def get_follow_up_analytics(db: AsyncSession = Depends(get_db)):
         type_query = select(
             FollowUp.follow_up_type,
             func.count(FollowUp.id),
-            func.avg(case((FollowUp.completed == True, 1), else_=0))
+            func.avg(case((FollowUp.sent == True, 1), else_=0))
         ).group_by(FollowUp.follow_up_type)
 
         type_result = await db.execute(type_query)
@@ -505,7 +505,7 @@ async def get_follow_up_analytics(db: AsyncSession = Depends(get_db)):
             )
         ).where(
             and_(
-                FollowUp.completed == True,
+                FollowUp.sent == True,
                 FollowUp.sent_date.isnot(None)
             )
         )
@@ -520,7 +520,7 @@ async def get_follow_up_analytics(db: AsyncSession = Depends(get_db)):
             Application, FollowUp.application_id == Application.id
         ).where(
             and_(
-                FollowUp.completed == True,
+                FollowUp.sent == True,
                 Application.response_received == True,
                 Application.response_date > FollowUp.sent_date
             )

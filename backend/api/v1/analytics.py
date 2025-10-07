@@ -304,7 +304,7 @@ async def _get_key_performance_indicators(db: AsyncSession) -> Dict:
         select(func.count(Application.id)).where(
             and_(
                 Application.offer_received == True,
-                Application.status == ApplicationStatus.OFFER
+                Application.status == ApplicationStatus.OFFERED
             )
         )
     )

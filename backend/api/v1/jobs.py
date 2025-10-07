@@ -141,7 +141,7 @@ async def list_jobs(
             query = query.where(
                 or_(
                     Job.title.ilike(search_pattern),
-                    Job.description.ilike(search_pattern),
+                    Job.job_description.ilike(search_pattern),
                     Company.name.ilike(search_pattern)
                 )
             )
