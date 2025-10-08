@@ -80,10 +80,24 @@ class JobScheduler:
 
     async def _send_follow_ups(self):
         """Background task to send follow-ups"""
-        logger.info("Sending scheduled follow-ups...")
-        # This will be connected to follow-up service
-        await asyncio.sleep(1)
-        logger.info("Follow-ups sent")
+        logger.info("Running daily follow-up check...")
+        try:
+            from backend.core.database import async_session_maker
+            from backend.services.followup_service import followup_service
+
+            async with async_session_maker() as db:
+                # Check and process follow-ups (with dry_run=False for live mode)
+                results = await followup_service.check_and_schedule_followup_emails(
+                    db,
+                    dry_run=False
+                )
+
+                logger.info(
+                    f"Follow-up check complete: {results['followups_needed']} applications processed"
+                )
+
+        except Exception as e:
+            logger.error(f"Follow-up check failed: {e}")
 
 # Global scheduler instance
 scheduler = JobScheduler()

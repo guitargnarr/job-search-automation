@@ -17,6 +17,22 @@ from backend.core.config import settings
 logger = get_logger(__name__)
 
 
+# Email template for follow-ups
+FOLLOWUP_EMAIL_TEMPLATE = """
+Hi there,
+
+I wanted to follow up on my application for the {job_title} position at {company_name} that I submitted on {applied_date}.
+
+I remain very interested in this opportunity and would appreciate any update on the status of my application.
+
+Thank you for your time and consideration.
+
+Best regards,
+Matthew Scott
+matthewdscott7@gmail.com
+"""
+
+
 class FollowUpService:
     """Manages automatic follow-up detection and scheduling"""
 
@@ -288,6 +304,96 @@ class FollowUpService:
             logger.error(f"Error creating follow-up record: {e}")
             await db.rollback()
             return None
+
+
+    async def send_followup_email_safe(
+        self,
+        db: AsyncSession,
+        application_id: int,
+        email_service
+    ) -> Dict[str, Any]:
+        """
+        Send follow-up email with safety override
+
+        Uses TEST_RECIPIENT_OVERRIDE to send all emails to the test address
+        Only sends if LIVE_SEND_MODE is True
+
+        Args:
+            db: Async database session
+            application_id: Application to follow up on
+            email_service: EmailAutomationService instance
+
+        Returns:
+            Result dictionary with send status
+        """
+        try:
+            # Get application with related data
+            query = select(Application).where(Application.id == application_id)
+            result = await db.execute(query)
+            app = result.scalar_one_or_none()
+
+            if not app:
+                return {'success': False, 'error': 'Application not found'}
+
+            # Load related job and company
+            await db.refresh(app, ['job'])
+            await db.refresh(app.job, ['company'])
+
+            # Safety check: Only send if LIVE_SEND_MODE is enabled
+            if not settings.LIVE_SEND_MODE:
+                logger.warning(
+                    f"[SAFETY] Email sending disabled (LIVE_SEND_MODE=False). "
+                    f"Would have sent to: {settings.TEST_RECIPIENT_OVERRIDE}"
+                )
+                return {
+                    'success': False,
+                    'dry_run': True,
+                    'message': 'LIVE_SEND_MODE is False - no email sent (safety)'
+                }
+
+            # Prepare email content
+            subject = f"Following up on {app.job.title} application"
+            body = FOLLOWUP_EMAIL_TEMPLATE.format(
+                job_title=app.job.title,
+                company_name=app.job.company.name if app.job.company else "your company",
+                applied_date=app.applied_date.strftime('%B %d, %Y') if app.applied_date else "recently"
+            )
+
+            # SAFETY: Always use TEST_RECIPIENT_OVERRIDE
+            recipient = settings.TEST_RECIPIENT_OVERRIDE
+            logger.info(
+                f"[SAFETY OVERRIDE] Sending follow-up to TEST address: {recipient} "
+                f"(Application #{application_id}: {app.job.company.name if app.job.company else 'Unknown'})"
+            )
+
+            # Send the email
+            success = await email_service.send_follow_up(
+                to_email=recipient,
+                subject=subject,
+                body=body
+            )
+
+            if success:
+                # Mark as sent in database
+                await self.mark_followup_sent(db, application_id)
+
+                return {
+                    'success': True,
+                    'application_id': application_id,
+                    'recipient': recipient,
+                    'timestamp': datetime.now().isoformat(),
+                    'job_title': app.job.title,
+                    'company': app.job.company.name if app.job.company else 'Unknown'
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': 'Email send failed (check email_service logs)'
+                }
+
+        except Exception as e:
+            logger.error(f"Error sending follow-up email: {e}")
+            return {'success': False, 'error': str(e)}
 
 
 # Singleton instance
