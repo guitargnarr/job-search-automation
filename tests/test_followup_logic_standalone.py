@@ -158,11 +158,13 @@ def test_no_applied_date_excluded():
 def test_boundary_exactly_7_days():
     """Test 9: Exactly 7 days (boundary test)"""
     cutoff = datetime.now() - timedelta(days=7)
+    # Application at exactly the cutoff time (not before it)
     app = MockApplication(9, ApplicationStatus.APPLIED,
-                          datetime.now() - timedelta(days=7, seconds=1))
+                          datetime.now() - timedelta(days=7))
 
     result = should_need_followup(app, cutoff)
-    assert result is False, "Exactly 7 days should NOT trigger"
+    # Logic uses < (less than), so equal time should NOT trigger
+    assert result is False, "Exactly at cutoff should NOT trigger (< not <=)"
     print("✅ Test 9: Boundary - exactly 7 days excluded")
 
 
