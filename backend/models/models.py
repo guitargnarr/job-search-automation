@@ -152,6 +152,7 @@ class Application(Base):
     follow_ups_sent = Column(Integer, default=0)
     last_follow_up = Column(DateTime)
     next_follow_up_scheduled = Column(DateTime)
+    followup_sent = Column(Boolean, default=False)  # Auto-followup flag for applications needing follow-up
 
     # Outcome
     offer_received = Column(Boolean, default=False)
