@@ -1,0 +1,70 @@
+MATTHEW SCOTT
+Louisville, KY | matthewdscott7@gmail.com | LinkedIn: linkedin.com/in/matthewscott
+
+AI/ML ENGINEER - NLP & GENERATIVE AI
+Transitioning Healthcare Data Analyst to AI/ML Engineering
+
+PROFESSIONAL SUMMARY
+Healthcare data professional with 9 years of hands-on experience analyzing medical claims, diagnosis codes, and quality metrics for 300,000+ Medicare Advantage members. Seeking to leverage deep healthcare domain expertise to contribute to AI/ML projects in insurance, healthcare technology, or consulting. Strong analytical foundation with proven track record of data-driven problem solving and cross-functional collaboration.
+
+CORE COMPETENCIES
+• Healthcare Domain Expert (9 years)        • Claims & Medical Billing Data
+• SQL & Data Analysis                       • Medicare/Medicaid Regulatory Knowledge
+• Healthcare AI Use Cases Understanding     • Clinical Data & Diagnosis Codes (ICD-10)
+• Data Quality & Process Improvement        • Cross-Functional Team Leadership
+• CMS Star Ratings & HEDIS                  • Analytical Problem Solving
+• Python (Learning - Personal Projects)     • Healthcare Stakeholder Management
+
+PROFESSIONAL EXPERIENCE
+
+Senior Healthcare Data Analyst | Major Health Insurer (Medicare Advantage) | 2016-2025
+9 years of progressive experience working with the exact data that powers healthcare AI/ML models
+
+HEALTHCARE DATA & AI-RELEVANT EXPERIENCE:
+• Analyzed millions of medical claims containing diagnosis codes (ICD-10), procedure codes (CPT/HCPCS), drug data (NDC), and provider information - the foundational datasets for training healthcare AI models
+
+• Led CMS Star Ratings compliance for 300,000+ Medicare members, requiring deep understanding of quality metrics, care gaps, and member outcomes - the exact business problems AI seeks to solve
+
+• Collaborated with clinical teams on medical necessity reviews and care management - providing clinical context essential for accurate AI model development in healthcare
+
+• Built complex SQL queries to identify patterns, anomalies, and trends across large healthcare datasets - experience directly applicable to ML feature engineering
+
+• Managed regulatory deliverables (HEDIS, Stars, audit responses) with 100% on-time delivery over 9 years - understanding compliance constraints for AI deployment in regulated healthcare
+
+• Identified $2M+ in potential compliance gaps through proactive data analysis - demonstrating analytical rigor needed for AI model validation and bias detection
+
+PROCESS IMPROVEMENT & AUTOMATION:
+• Led initiatives to automate manual reporting processes, improving efficiency by 40%
+• Developed standardized data validation procedures reducing errors by 60%
+• Created documentation for complex healthcare workflows and business requirements
+
+CROSS-FUNCTIONAL LEADERSHIP:
+• Collaborated with IT, clinical, operations, and compliance teams on enterprise initiatives
+• Presented data insights to senior leadership to drive strategic decisions
+• Trained team members on regulatory requirements and data analysis techniques
+
+EDUCATION
+Bachelor of Arts (BA) | Business Administration
+Relevant coursework: Statistics, Data Analysis, Information Systems
+
+TECHNICAL SKILLS
+• Data Analysis: SQL (Expert), Excel (Advanced), Tableau, Power BI
+• Healthcare Systems: Claims platforms, EHR systems, compliance databases
+• Learning: Python (personal AI/ML projects), Machine Learning fundamentals
+• Methodologies: Agile, Lean Six Sigma, Root Cause Analysis
+
+HEALTHCARE DOMAIN KNOWLEDGE (Critical for AI Projects)
+• Claims Processing: Medical, pharmacy, dental claims adjudication workflows
+• Medical Coding: ICD-10 diagnosis codes, CPT procedure codes, DRG groupings
+• Regulatory: CMS regulations, HEDIS specifications, Medicare Advantage rules
+• Clinical: Care management, disease management, quality improvement programs
+• Healthcare IT: Claims systems, provider networks, formularies, benefit design
+
+ACHIEVEMENTS
+• 9 years managing Medicare Advantage Star Ratings data affecting 300,000+ members
+• 100% on-time delivery of all CMS regulatory submissions (9-year track record)
+• Identified $2M+ in compliance gaps through proactive SQL-based data analysis
+• Led cross-functional teams on quality improvement initiatives with measurable outcomes
+
+WHY AI/ML:
+Excited to transition technical healthcare expertise into AI/ML engineering. My 9 years of healthcare data experience provides irreplaceable domain knowledge for training accurate, compliant AI models. Committed to continuous learning in Python, ML frameworks, and AI technologies while contributing immediately through domain expertise.

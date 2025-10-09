@@ -1,0 +1,54 @@
+Matthew Scott
+Louisville, KY
+matthewdscott7@gmail.com
+
+October 09, 2025
+
+Hiring Manager
+[COMPANY NAME]
+Jeffersonville, IN
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the AI/ML Engineer - NLP & Generative AI position. With 9 years of progressive experience in healthcare data analytics, claims processing, and AI-driven quality improvement, I am excited to apply my domain expertise to [COMPANY NAME]'s AI initiatives.
+
+HEALTHCARE AI DOMAIN EXPERTISE (9 Years):
+
+At my previous role with a major health insurer (Medicare Advantage, 300,000+ members), I developed deep expertise that directly applies to AI/ML projects in healthcare:
+
+• Claims Data Analysis: Analyzed millions of medical claims, diagnosis codes (ICD-10), procedure codes (CPT/HCPCS), and provider data - the exact data that powers healthcare AI models
+
+• Regulatory Compliance & Quality Metrics: Managed CMS Star Ratings, HEDIS measures, and compliance reporting - understanding the regulatory context critical for healthcare AI deployment
+
+• Clinical Data Understanding: Worked with clinical teams on quality improvement, medical necessity reviews, and care gap analysis - providing the clinical context needed for accurate AI model training
+
+• Healthcare Workflows: Deep knowledge of claims adjudication, prior authorization, medical billing, and member services - the business processes AI seeks to optimize
+
+AI-RELEVANT TECHNICAL SKILLS:
+
+• Data Pipeline Experience: Built SQL queries processing millions of records, identifying patterns and anomalies - foundational skills for ML feature engineering
+
+• Process Optimization: Led initiatives that automated manual processes and improved data quality - the mindset needed for AI implementation
+
+• Cross-Functional Leadership: Collaborated with clinical, IT, compliance, and operations teams - essential for AI product development requiring diverse stakeholder input
+
+• Analytical Problem-Solving: Identified $2M+ in compliance gaps through proactive data analysis - demonstrating the analytical rigor needed for AI model validation
+
+WHY THIS ROLE:
+
+I am specifically drawn to AI roles in healthcare because I understand the domain challenges:
+- Medical data complexity (diagnosis coding, drug formularies, provider networks)
+- Regulatory constraints (HIPAA, CMS requirements)
+- Clinical accuracy requirements (patient safety implications)
+- Healthcare stakeholder dynamics (providers, members, payers)
+
+This domain knowledge, combined with my analytical background and eagerness to apply AI/ML technologies, positions me to contribute immediately to [COMPANY NAME]'s healthcare AI projects.
+
+My salary expectations align with the $95k-$135k range for this role.
+
+I would welcome the opportunity to discuss how my 9 years of healthcare data experience can accelerate [COMPANY NAME]'s AI initiatives. I am committed to continuous learning and excited to deepen my technical AI/ML skills while leveraging my irreplaceable domain expertise.
+
+Thank you for your consideration.
+
+Sincerely,
+Matthew Scott

@@ -30,19 +30,10 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
-    # Email Settings (Gmail API)
-    GMAIL_CREDENTIALS_FILE: Optional[str] = Field(
-        default=None,
-        env="GMAIL_CREDENTIALS_FILE"
-    )
-    GMAIL_TOKEN_FILE: Optional[str] = Field(
-        default=None,
-        env="GMAIL_TOKEN_FILE"
-    )
-    GMAIL_SCOPES: Optional[str] = Field(
-        default=None,
-        env="GMAIL_SCOPES"
-    )
+    # Email Settings (Gmail API) - DISABLED FOR SECURITY
+    GMAIL_CREDENTIALS_FILE: Optional[str] = None
+    GMAIL_TOKEN_FILE: Optional[str] = None
+    GMAIL_SCOPES: Optional[str] = None
 
     @property
     def gmail_scopes_list(self) -> List[str]:
@@ -101,15 +92,9 @@ class Settings(BaseSettings):
     EMAIL_CHECK_INTERVAL_MINUTES: int = Field(default=30, env="EMAIL_CHECK_INTERVAL_MINUTES")
     JOB_AGGREGATION_INTERVAL_HOURS: int = Field(default=6, env="JOB_AGGREGATION_INTERVAL_HOURS")
 
-    # Email Safety Settings (for testing and automation)
-    TEST_RECIPIENT_OVERRIDE: Optional[str] = Field(
-        default="matthewdscott7@gmail.com",
-        env="TEST_RECIPIENT_OVERRIDE"
-    )
-    LIVE_SEND_MODE: bool = Field(
-        default=False,  # Safety: disabled by default
-        env="LIVE_SEND_MODE"
-    )
+    # Email Safety Settings - DISABLED
+    TEST_RECIPIENT_OVERRIDE: Optional[str] = None
+    LIVE_SEND_MODE: bool = False
 
     # API Pagination Limits (prevent memory exhaustion)
     MAX_API_PAGE_SIZE: int = Field(default=100, env="MAX_API_PAGE_SIZE")
