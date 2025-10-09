@@ -1,0 +1,132 @@
+AI GOVERNANCE INTERVIEW STRATEGY
+Based on 9 Years Medicare Compliance at Humana
+
+===============================================================================
+YOUR UNIQUE VALUE PROPOSITION
+===============================================================================
+
+OPENING STATEMENT (When asked "Why AI?" or "Tell me about yourself"):
+
+"After 9 years managing Medicare compliance at Humana - where a single regulatory error could affect 300,000 members and trigger millions in fines - I've watched the AI governance crisis unfold in real time.
+
+Healthcare organizations are deploying AI systems without the compliance infrastructure our industry spent 40 years building. The EU AI Act classifies healthcare AI as 'high-risk.' CMS is developing AI guidance for Medicare Advantage. Every state is passing new AI laws. Yet most AI teams have brilliant data scientists but zero regulatory compliance expertise.
+
+That's the gap I fill. I know how to translate 400-page regulations into actionable compliance frameworks. I've led projects with zero defects at Fortune 50 scale. I understand data governance, audit trail management, and stakeholder coordination across Legal, IT, and Operations.
+
+I'm not trying to become a data scientist - I'm positioning to lead AI governance in healthcare, where my regulatory expertise is irreplaceable and the demand is exploding."
+
+===============================================================================
+HANDLING TECHNICAL GAPS
+===============================================================================
+
+Q: "Do you know PyTorch or TensorFlow?"
+A: "Not for production ML engineering, but I don't need to. My role in AI governance isn't building models - it's ensuring they're validated, compliant, and auditable. I know how to read technical documentation, work with data scientists on testing protocols, and translate technical capabilities into regulatory risk assessments. I can identify when a model's training data violates HIPAA. I can design the audit framework for CMS examinations. That's what healthcare AI governance requires, and that's the skillset that's scarce."
+
+Q: "Can you explain gradient descent or neural network architectures?"
+A: "I understand ML concepts at a governance level - what training data is, how bias enters models, why validation matters. But I'm not a research scientist. What I CAN do is:
+- Design the testing framework to validate model outputs against regulatory requirements
+- Build the compliance documentation for FDA/CMS AI submissions
+- Identify bias in training data through statistical validation
+- Create audit trails proving the model meets regulatory standards
+- Coordinate with data scientists on governance requirements
+
+The regulatory side is what healthcare AI is missing, and that's where I add unique value."
+
+Q: "Why should we hire you over someone with a data science degree?"
+A: "Because when your AI system faces a CMS audit or regulatory enforcement action, you need someone who has managed those processes for 9 years. Data scientists can learn governance basics in 6 months. It takes years to develop the institutional knowledge of how CMS thinks, how audits work, what documentation satisfies regulators. I bring that on day one. The AI technical skills? I'm learning those rapidly. But my 9 years of regulatory expertise? That's irreplaceable."
+
+===============================================================================
+ADDRESSING THE TRANSITION
+===============================================================================
+
+Q: "You have no AI experience. Why this field?"
+A: "I have the compliance experience AI desperately needs. Look at the headlines:
+- Amazon's AI recruiting tool had to be scrapped for gender bias
+- Healthcare AI failed FDA approval for lack of validation documentation
+- Insurance companies facing lawsuits over discriminatory AI algorithms
+
+These aren't technical failures - they're GOVERNANCE failures. Organizations deployed AI without the compliance infrastructure I've been building for 9 years. The EU AI Act just mandated what healthcare already knows: High-risk AI requires documented validation, bias testing, audit trails, and regulatory oversight. That's exactly my background."
+
+Q: "What are you learning about AI?"
+A: "I'm completing AI Governance, Ethics & Risk certification this month and IBM AI Ethics certificate. I'm learning Python and ML fundamentals through self-study. But more importantly, I'm studying AI regulatory frameworks: EU AI Act, NIST AI Risk Framework, emerging CMS guidance. I'm reading case law on AI liability. I'm following FDA's evolving AI/ML guidance.
+
+Because my value proposition isn't technical expertise - it's regulatory expertise applied to AI. I need to understand how models work so I can govern them. I don't need to build them from scratch."
+
+===============================================================================
+CERTIFICATIONS STRATEGY
+===============================================================================
+
+IMMEDIATE (Add to resume NOW as "In Progress"):
+✅ AI Governance, Ethics & Risk Certification (AI CERTs) - Expected November 2025
+✅ IBM AI Ethics Professional Certificate (Coursera) - In Progress
+
+Can state in interviews:
+"I'm currently completing AI Governance certification and IBM AI Ethics course. Both will be finished by [30 days from now], but I can start contributing immediately through my Medicare compliance expertise."
+
+MEDIUM-TERM (Mention as "Planned"):
+- CGEIT (Certified in Governance of Enterprise IT) by ISACA
+- Certified Information Privacy Professional (CIPP) if healthcare AI focus
+
+DO NOT mention as gaps - frame as "deepening expertise":
+"I'm also planning CGEIT certification to formalize my governance expertise and CIPP for healthcare AI privacy compliance."
+
+===============================================================================
+SALARY NEGOTIATION
+===============================================================================
+
+AI Governance roles command premiums because expertise is scarce:
+
+Entry-level AI Governance: $90-120k
+Mid-level AI Compliance: $120-150k
+Senior AI Risk Manager: $150-200k
+
+YOUR POSITIONING:
+"While I'm new to AI governance as a formal role, I bring 9 years of Fortune 50 compliance expertise managing regulatory risk for 300,000+ members. AI governance leaders come from two backgrounds: data scientists learning compliance, or compliance experts learning AI. I'm the latter, and compliance expertise takes far longer to develop. My salary expectations reflect the value of immediate regulatory expertise plus my commitment to rapidly developing AI technical knowledge."
+
+RANGE GUIDANCE:
+- AI Compliance Officer: $120-150k justified
+- AI Governance Analyst: $100-130k justified
+- AI Risk Coordinator: $90-120k (if junior role)
+
+===============================================================================
+RED FLAGS TO AVOID
+===============================================================================
+
+DON'T SAY:
+❌ "I want to learn AI" (sounds like using them for training)
+❌ "I need to transition careers" (sounds desperate)
+❌ "I can code if you train me" (not the value prop)
+❌ "Compliance is boring, AI is exciting" (undermines expertise)
+
+DO SAY:
+✅ "AI governance is the critical missing piece in healthcare's AI transformation"
+✅ "My 9 years managing Medicare compliance is directly applicable to AI regulatory requirements"
+✅ "I bring expertise that can't be built overnight - organizations are scrambling for governance talent"
+✅ "I'm not learning AI to escape compliance - I'm bringing compliance expertise AI desperately needs"
+
+===============================================================================
+CLOSING STATEMENT
+===============================================================================
+
+"I believe AI governance will be to the next decade what HIPAA compliance was to the 2000s - a mandatory function requiring specialized expertise that combines technical understanding with regulatory knowledge. I'm positioning myself as that specialist, bringing 9 years of Fortune 50 compliance experience to a field where demand is exploding and expertise is scarce. I'm ready to start contributing immediately while continuing to deepen my AI technical knowledge."
+
+===============================================================================
+ACTION ITEMS FOR YOU
+===============================================================================
+
+BEFORE NEXT APPLICATION:
+1. Add to resume: AI Governance certification (In Progress)
+2. Practice opening statement (30 seconds, confident delivery)
+3. Prepare 3 examples of "zero-defect" projects from Humana
+4. Research company's AI initiatives (mention in cover letter)
+
+DURING INTERVIEW:
+1. Lead with governance value, not "learning AI"
+2. Use "scarce expertise" framing
+3. Cite EU AI Act, CMS guidance as demand drivers
+4. Position as governance specialist, not engineer-in-training
+
+AFTER INTERVIEW:
+1. Send thank-you emphasizing governance gap you fill
+2. Mention specific AI governance challenge you discussed
+3. Reiterate certification completion timeline

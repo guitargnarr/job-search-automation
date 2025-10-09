@@ -1,0 +1,107 @@
+MATTHEW DAVID SCOTT
+Louisville, KY | 502-345-0525 | matthewdscott7@gmail.com | linkedin.com/in/mscott77/
+
+AI GOVERNANCE & COMPLIANCE SPECIALIST
+Medicare Compliance Expert Transitioning to AI Risk Management
+
+PROFESSIONAL SUMMARY
+Regulatory compliance professional with 9 years at Humana (Fortune 50) managing Medicare compliance, risk assessment, and quality assurance for enterprise AI-ready platforms. Proven ability to translate complex regulations into compliance frameworks, achieve zero-defect implementations through systematic testing, and coordinate governance across Legal, IT, and Operations. Seeking AI governance roles where healthcare regulatory expertise and data validation experience address the critical compliance gap in AI deployment.
+
+CORE COMPETENCIES
+• Regulatory Compliance & Risk Management (9 years)    • AI Governance Frameworks
+• Medicare/CMS Regulatory Expert                        • Data Quality & Validation
+• Zero-Defect Testing & QA Methodologies               • Audit & Documentation
+• Enterprise Stakeholder Management                     • Compliance Program Management
+• SQL-Based Data Validation                            • Process Documentation
+• Cross-Functional Leadership (IT/Legal/Compliance)    • Executive Reporting
+
+PROFESSIONAL EXPERIENCE
+
+Senior Risk Management Professional II (Compliance & Governance Lead)
+HUMANA, INC. | Louisville, KY | November 2022 - August 2025
+
+Medicare Compliance Subject Matter Expert (SME) responsible for regulatory risk assessment, quality assurance governance, and cross-functional compliance coordination for Humana's Medicare platform serving millions of members.
+
+REGULATORY GOVERNANCE & RISK MANAGEMENT:
+• Reviewed 400+ page CMS Final Rule guidance annually, identifying regulatory risks and translating complex requirements into actionable compliance frameworks - direct application to interpreting AI regulations (EU AI Act, state laws, CMS AI guidance)
+• Served as Medicare compliance SME for enterprise platform changes, ensuring all system modifications met regulatory requirements before production deployment
+• Managed third-party audit processes and regulatory examinations, maintaining compliant documentation and evidence trails
+
+ZERO-DEFECT TESTING & VALIDATION (AI Model Validation Parallel):
+• Led e-Commerce Acceleration and Data Modernization projects achieving ZERO critical or high defects through systematic testing protocols and validation frameworks
+• Developed analytics-based testing methodology targeting highest-impact customer segments - approach directly applicable to AI model bias detection and validation
+• Achieved 100% on-time delivery for 100+ time-sensitive regulatory deliverables over 3 consecutive years as directly responsible individual (DRI)
+
+COMPLIANCE PROGRAM MANAGEMENT:
+• Orchestrated Annual Enrollment Period (AEP) compliance - Humana's highest-risk regulatory period - ensuring zero compliance violations through rigorous testing and stakeholder coordination
+• Built executive compliance scorecards tracking performance metrics, trends, and risk indicators for senior leadership decision-making
+• Created detailed process documentation, standard operating procedures, and audit-ready evidence repositories
+
+DATA GOVERNANCE & QUALITY ASSURANCE:
+• Expert SQL-based data validation ensuring data integrity across Medicare platform - foundational skill for AI training data quality assessment
+• Identified potential compliance gaps through proactive data analysis, preventing regulatory violations
+• Maintained data quality standards across enterprise systems serving 300,000+ Medicare members
+
+CROSS-FUNCTIONAL GOVERNANCE LEADERSHIP:
+• Coordinated compliance alignment across IT, Legal, Regulatory & Compliance, and business units at Fortune 50 enterprise scale
+• Managed stakeholder relationships requiring translation of technical capabilities into regulatory risk assessments
+• Led governance meetings ensuring aligned execution on compliance-critical initiatives
+
+Risk Management Professional (Progressive Roles)
+HUMANA, INC. | Louisville, KY | January 2016 - October 2022
+
+9+ years progressive experience in Medicare compliance, risk management, and governance.
+
+Key Accomplishments:
+• Built testing protocols ensuring regulatory compliance across all platform deliverables
+• Performed data validation and quality assurance using SQL analytics
+• Created standard operating procedures and compliance documentation
+• Participated in Agile/SDLC governance, sprint planning, and UAT oversight
+
+Account Executive (Project & Client Management)
+MIGHTILY | Louisville, KY | July 2015 - December 2016
+
+Managed $40k monthly retainer accounts requiring stakeholder coordination and project governance.
+
+EDUCATION & PROFESSIONAL DEVELOPMENT
+
+Bachelor of Science in Communication | University of Louisville | Expected 2025
+• Dean's List, Fall 2013
+
+Certifications & Training:
+• AI Governance, Ethics & Risk Certification (In Progress - Expected November 2025)
+• IBM AI Ethics Professional Certificate (Coursera - In Progress)
+• Google Ads Certified (demonstrates technical learning ability)
+• Annual compliance and security training (2016-2025)
+
+TECHNICAL SKILLS
+
+Compliance & Governance: CMS Regulations, Risk Assessment, Audit Management, Regulatory Reporting
+Data & Analytics: SQL (Expert), Data Validation, Quality Assurance, Statistical Analysis
+Tools & Platforms: JIRA, Oracle, Braze, Firebase, Splunk, SharePoint, Power Apps/Automate
+AI Governance (Learning): Python, ML Fundamentals, AI Ethics Frameworks, Bias Detection
+Methodologies: Agile/SDLC Governance, Root Cause Analysis, Process Documentation
+
+HEALTHCARE REGULATORY EXPERTISE (Critical for AI Governance)
+• Medicare/CMS Regulations: 9 years regulatory compliance, audit, and reporting
+• Data Governance: Quality assurance, validation, integrity standards
+• Risk Management: Identification, assessment, mitigation at enterprise scale
+• Compliance Frameworks: Translation of regulations into actionable processes
+• Audit Trail Management: Documentation and evidence for regulatory examinations
+
+WHY AI GOVERNANCE:
+
+The AI governance crisis is acute: Organizations deploy AI systems lacking the compliance infrastructure healthcare spent decades building. My 9 years managing Medicare compliance at Fortune 50 scale provides exactly what AI governance requires:
+
+• Regulatory Translation: Converting 400-page guidance into compliance frameworks
+• Risk Assessment: Identifying and mitigating regulatory risks before deployment
+• Zero-Defect Validation: Testing protocols ensuring compliant system implementation
+• Stakeholder Alignment: Coordinating IT, Legal, Compliance on governance initiatives
+• Audit Readiness: Building documentation trails for regulatory examinations
+
+I'm not pivoting from compliance to AI - I'm bringing compliance expertise to an AI field that desperately needs it. My value isn't coding models; it's ensuring those models are safe, compliant, and audit-ready from conception through deployment.
+
+CERTIFICATIONS COMPLETING:
+• AI Governance, Ethics & Risk (Nov 2025)
+• IBM AI Ethics (In Progress)
+• CGEIT consideration for 2026

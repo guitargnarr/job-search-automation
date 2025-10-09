@@ -1,0 +1,63 @@
+Matthew David Scott
+Louisville, KY
+502-345-0525 | matthewdscott7@gmail.com
+
+October 09, 2025
+
+Hiring Manager
+[COMPANY NAME]
+Remote (Louisville office option)
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the Data & Analytics Engineer - AI/ML position at [COMPANY NAME]. After 9 years managing Medicare compliance at Humana, I've recognized that AI governance is the critical missing piece in healthcare's AI transformation - and my regulatory expertise positions me uniquely to fill this gap.
+
+THE AI GOVERNANCE CRISIS IN HEALTHCARE:
+
+Healthcare organizations are deploying AI systems without the compliance infrastructure that took our industry 40 years to build. The EU AI Act classifies healthcare AI as "high-risk." CMS is developing AI guidance for Medicare Advantage. State laws are emerging rapidly. Yet most AI teams lack personnel who understand both the technology AND the regulatory landscape required for compliant deployment.
+
+MY UNIQUE VALUE PROPOSITION:
+
+I don't just understand compliance - I've lived it at Fortune 50 scale for 9 years:
+
+Regulatory Translation & Risk Assessment:
+• Reviewed 400+ page CMS Final Rule guidance annually, translating complex regulations into actionable compliance frameworks - the exact skill needed for interpreting AI regulations (EU AI Act, state laws)
+• Identified regulatory risks and developed mitigation strategies for enterprise Medicare platform serving millions of members
+• Built audit-ready documentation and maintained compliance across IT, Legal, and Operations teams
+
+Zero-Defect Testing & Validation:
+• Led e-Commerce Acceleration and Data Modernization projects achieving ZERO critical defects through systematic testing protocols - directly applicable to AI model validation and bias detection
+• Developed analytics-based testing methodology ensuring quality across highest-impact customer segments
+• Achieved 100% on-time delivery for 100+ time-sensitive compliance deliverables over 3 consecutive years
+
+Enterprise Stakeholder Management:
+• Coordinated Annual Enrollment Period (AEP) - Humana's highest-revenue period - managing cross-functional alignment across IT, Legal, Regulatory, Compliance, and business units
+• Built executive scorecards and compliance reporting for senior leadership decision-making
+• Managed third-party audits and regulatory examinations
+
+Data Governance & Quality Assurance:
+• Expert SQL-based data validation ensuring data integrity across Medicare platform
+• Created detailed process documentation and standard operating procedures
+• Maintained knowledge repositories and compliance audit trails
+
+TECHNICAL FOUNDATION FOR AI GOVERNANCE:
+
+• SQL & Data Analysis: Expert-level querying and validation (foundation for understanding AI training data)
+• Tools: JIRA, Oracle, Braze, Firebase, Splunk, SharePoint (enterprise systems experience)
+• Learning: Python, ML fundamentals, AI governance frameworks
+• Certifications In Progress: AI Governance, Ethics & Risk; IBM AI Ethics
+
+WHY THIS ROLE MATTERS:
+
+The AI governance skillset is scarce because it requires both deep regulatory expertise AND technical understanding of AI systems. My 9 years in Medicare compliance provides the regulatory foundation. I'm committed to rapidly developing AI technical knowledge while contributing immediately through governance expertise that can't be built overnight.
+
+I understand my value isn't in training neural networks - it's in ensuring those networks are compliant, auditable, and aligned with regulatory requirements from day one. That's what healthcare AI deployment requires, and that's what I bring.
+
+My salary expectations align with the $100k-$145k range for governance-level roles.
+
+I would welcome the opportunity to discuss how my Medicare compliance background can help [COMPANY NAME] deploy AI systems that are both innovative and compliant.
+
+Thank you for your consideration.
+
+Sincerely,
+Matthew David Scott
