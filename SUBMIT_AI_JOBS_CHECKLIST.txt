@@ -8,6 +8,11 @@ Salary: $95,000 - $135,000
 Location: Jeffersonville, IN (5 minutes from Louisville)
 Folder: applications/2025-10-09_GEICO_Government_Employees_Ins_AI/
 
+VERIFICATION REQUIRED:
+Run: python3 verify_job_status.py 74
+Check: GEICO has 166 active Data Scientist jobs, ML/NLP roles confirmed active
+Status: PROCEED (GEICO actively hiring AI/ML)
+
 STEPS:
 1. Open Matthew_Scott_Cover_Letter.txt
 2. Find/Replace: [COMPANY NAME] → GEICO
