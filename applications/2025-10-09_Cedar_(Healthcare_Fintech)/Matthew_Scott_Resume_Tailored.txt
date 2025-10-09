@@ -1,0 +1,42 @@
+MATTHEW SCOTT
+Louisville, KY | matthewdscott7@gmail.com
+
+DATA SCIENTIST III - ML ENGINEERING (HEALTHCARE)
+
+PROFESSIONAL SUMMARY
+Healthcare analytics professional with 9 years of experience in Medicare Advantage, claims processing, regulatory compliance, and data analysis. Proven track record of delivering insights that drive operational improvements and ensure regulatory compliance. Strong technical skills in SQL, data visualization, and cross-functional collaboration.
+
+CORE COMPETENCIES
+• Healthcare Data Analysis (9 years)     • Medicare/Medicaid Programs          • Claims & Medical Billing
+• Regulatory Compliance (CMS, HEDIS)     • SQL & Database Querying             • Process Improvement
+• Star Ratings & Quality Metrics         • Cross-Functional Leadership         • Stakeholder Management
+• Data Visualization & Reporting         • Problem Solving & Analytics         • Healthcare IT Systems
+
+PROFESSIONAL EXPERIENCE
+
+Senior Healthcare Analyst | Healthcare Insurance | 2016-Present
+• Analyzed Medicare Advantage data for 300,000+ members, ensuring compliance with CMS Star Ratings
+• Led compliance reporting initiatives with 100% on-time delivery of CMS submissions
+• Collaborated with clinical, operations, and compliance teams on quality improvement projects
+• Developed SQL queries and reports to identify trends, gaps, and improvement opportunities
+• Managed regulatory deliverables including HEDIS, Stars, and audit responses
+
+Business Analyst | Insurance & Healthcare | 2014-2016
+• Supported implementation of new healthcare programs and system enhancements
+• Analyzed claims data to identify processing errors and recommend corrections
+• Created documentation for business processes and technical requirements
+• Worked with IT teams on system testing and validation
+
+EDUCATION
+Bachelor of Arts (BA) | Business Administration
+Relevant coursework in data analysis, statistics, and information systems
+
+TECHNICAL SKILLS
+• Tools: SQL, Excel, Tableau, Power BI, JIRA
+• Healthcare Systems: Claims platforms, EHR systems, compliance tools
+• Methodologies: Agile, Lean Six Sigma, Process Improvement
+
+ACHIEVEMENTS
+• 100% on-time CMS submissions over 9-year period
+• Led Medicare compliance initiatives affecting 300,000+ members
+• Identified $2M+ in potential compliance gaps through proactive data analysis
