@@ -1,0 +1,125 @@
+MATTHEW DAVID SCOTT
+Louisville, KY | 502-345-0525 | matthewdscott7@gmail.com | linkedin.com/in/mscott77/
+
+TECHNICAL ACCOUNT MANAGER - HEALTHCARE TECHNOLOGY
+Client-Facing Business Analyst with 9 Years Healthcare Systems Experience
+
+PROFESSIONAL SUMMARY
+Technical account management professional with 9 years at Humana managing stakeholder relationships, technical project delivery, and SQL-based data analysis for enterprise healthcare platforms. Proven track record as technical liaison between business clients and engineering teams, achieving zero-defect implementations through systematic governance. Expert in healthcare systems integration, SQL data validation, and cross-functional technical coordination serving millions of members.
+
+CORE COMPETENCIES
+• Technical Account Management (9 years)          • SQL & Database Analysis (Expert)
+• Client-Facing Technical Leadership              • Healthcare Systems Integration
+• Stakeholder Coordination (IT/Business)          • Technical Requirements Gathering
+• Technical Project Management                    • Data Validation & Quality Assurance
+• Healthcare Domain Expert (Medicare/Payments)    • Cross-Functional Team Leadership
+• Technical Communication & Documentation         • Executive Reporting & Metrics
+
+PROFESSIONAL EXPERIENCE
+
+Senior Risk Management Professional II (Technical Business Analyst)
+HUMANA, INC. | Louisville, KY | November 2022 - August 2025
+
+Technical account manager role serving as liaison between business stakeholders and IT engineering teams for Humana's Medicare platform serving millions of members. Responsible for plan/pricing accuracy on Humana.com/medicare website, compliance requirements translation, database validation, and cross-functional project coordination.
+
+CLIENT-FACING TECHNICAL LEADERSHIP:
+• Served as technical subject matter expert (SME) for Medicare compliance platform changes, coordinating between business requirements and IT implementation teams to ensure technical solutions met operational needs
+
+• Led e-Commerce Acceleration and Data Modernization technical projects achieving ZERO critical or high defects through systematic technical governance and stakeholder coordination
+
+• Orchestrated Annual Enrollment Period (AEP) technical preparation - Humana's highest-revenue period - managing technical dependencies, integration timelines, and cross-functional alignment across IT, Operations, and business teams
+
+• Built trusted technical partnerships with IT development teams, translating business needs into technical requirements and ensuring delivery met stakeholder expectations
+
+SQL & TECHNICAL DATA ANALYSIS:
+• Expert SQL proficiency: Wrote complex queries joining large datasets for data validation, integrity checks, and trend analysis across Medicare platform databases (MS SQL Server, MySQL)
+
+• Performed technical data quality assurance, identifying anomalies and ensuring data integrity across healthcare system integrations
+
+• Built analytics-based testing methodology using SQL to validate technical implementations and identify potential issues before production deployment
+
+TECHNICAL GOVERNANCE & PROJECT MANAGEMENT:
+• Managed technical aspects of enterprise projects from requirements gathering through implementation and post-launch monitoring
+
+• Created technical documentation, integration specifications, and process workflows for healthcare systems
+
+• Coordinated technical schedules and maintenance windows across multiple teams and systems
+
+• Delivered executive-level technical health reporting, tracking integration performance metrics and system reliability trends
+
+STAKEHOLDER & VENDOR MANAGEMENT:
+• Managed technical relationships across IT engineering, business operations, legal, and compliance teams at Fortune 50 enterprise scale
+
+• Coordinated third-party vendor technical integrations and audit processes
+
+• Presented technical status updates, risk assessments, and recommendations to senior leadership
+
+• Resolved technical escalations requiring cross-functional coordination and rapid problem-solving
+
+Risk Management Professional (Progressive Technical Roles)
+HUMANA, INC. | Louisville, KY | January 2016 - October 2022
+
+9+ years progressive experience managing technical governance, data analysis, and client-facing coordination for healthcare systems.
+
+Key Technical Accomplishments:
+• Built SQL-based data validation protocols for healthcare platform quality assurance
+• Created technical documentation and standard operating procedures for system integrations
+• Managed technical testing coordination including UAT, sprint planning, and defect triage
+• Participated in Agile/SDLC processes as business analyst representative
+• Handled technical incident response and escalation management
+• Served as primary DRI for web vulnerability management reporting and SLA tracking
+
+Account Executive (Client & Project Management)
+MIGHTILY | Louisville, KY | July 2015 - December 2016
+
+Client relationship manager for digital marketing accounts requiring technical coordination.
+
+• Managed 10+ client accounts ($40k monthly revenue) with technical project delivery
+• Coordinated between clients and technical teams (developers, designers)
+• Created client reporting on technical performance metrics
+• Led technical troubleshooting and issue resolution
+
+EDUCATION & CERTIFICATIONS
+
+Bachelor of Science in Communication | University of Louisville | Expected 2025
+• Dean's List, Fall 2013
+
+Professional Development:
+• Ongoing professional development through self-directed technology upskilling
+• AI power user with keen awareness of do's and don'ts and ability to spot hallucinations
+
+TECHNICAL SKILLS
+
+SQL & Databases: MS SQL Server, MySQL, PostgreSQL, ChromaDB, VectorDB, SQLlite
+Data Analysis: Complex plan/pricing data validation queries, data validation, integrity checks, trend analysis, reporting
+Healthcare Systems: Medicare platforms, healthcare integrations, Section 508 WCAG
+Technical Tools: JIRA, Azure, Splunk, SharePoint, ServiceNow Power Apps/Automate
+Project Management: Agile/SDLC, Sprint Planning, UAT, Technical Requirements Gathering
+Communication: Technical documentation, executive reporting, stakeholder presentations
+Aritifical Intelligence: Ethical and safety aligned best practices
+
+HEALTHCARE DOMAIN EXPERTISE (Critical for Cedar)
+• 9 years Medicare/CMS regulatory and operational knowledge
+• Understanding of regulatory and legislative guidance and ability to communicate impacts
+• Experience with provider data, member data, and healthcare transactions
+• Knowledge of HIPAA/PHI, healthcare data governance, and compliance requirements
+• Healthcare stakeholder dynamics (R&C, copywriters, stakeholder sign-off, post-production validation)
+
+KEY ACHIEVEMENTS
+
+• 9 years managing technical stakeholder relationships for Medicare platform affecting millions of members
+• ZERO critical defects on enterprise technical projects through systematic governance
+• 100% on-time delivery for 100+ technical deliverables over 9 consecutive years
+• Led cross-functional technical initiatives coordinating IT, business, legal, and compliance teams
+• Expert SQL skills developed through 9 years of healthcare data analysis and validation
+
+WHY CEDAR:
+
+Cedar's mission to improve healthcare affordability through better patient financial experience aligns perfectly with my background. At Humana, I saw the complexity of healthcare billing and payments from the inside. Cedar's platform - using data science and personalization to simplify this process - is exactly the innovation healthcare needs.
+
+As a TAM, I bring:
+• 3+ years of technology upskilling in software engineering space as to remain current with rapidly evolving digital healthcare landscape
+• 9 years managing technical relationships in healthcare at Fortune 50 scale
+• Expert SQL to analyze integration health and troubleshoot data issues
+• Proven track record translating between technical and business stakeholders
+• Understanding of both the technical and operational sides of healthcare systems

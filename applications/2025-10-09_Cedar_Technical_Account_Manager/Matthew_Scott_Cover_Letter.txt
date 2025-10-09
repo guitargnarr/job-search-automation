@@ -1,0 +1,75 @@
+Matthew David Scott
+Louisville, KY
+502-345-0525 | matthewdscott7@gmail.com
+
+October 9, 2025
+
+Hiring Manager
+Cedar
+Remote (US)
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the Technical Account Manager position at Cedar. After reading about Cedar's mission to improve the healthcare financial experience, I immediately recognized that my 9 years managing technical stakeholder relationships at Humana positions me as an ideal candidate for this role.
+
+This is not a pivot or a stretch - this role matches my background precisely:
+
+CLIENT-FACING TECHNICAL LEADERSHIP (9 Years at Humana):
+
+At Humana (Fortune 50, serving millions of Medicare members), I served as the technical liaison between business stakeholders and IT teams on enterprise platform projects:
+
+• Technical Project Management: Led e-Commerce Acceleration and Data Modernization projects, coordinating between IT engineering teams and business stakeholders to ensure technical requirements met operational needs - achieving ZERO critical defects through systematic governance
+
+• Stakeholder Coordination: Orchestrated Annual Enrollment Period (AEP) - Humana's highest-revenue period - managing technical timelines and dependencies across IT, Operations, Legal, and Compliance teams at enterprise scale
+
+• Technical Subject Matter Expert: Served as Medicare compliance SME for platform changes, translating business requirements into technical specifications and ensuring IT implementations met regulatory standards
+
+• Client Relationship Management: Built trusted relationships across functional areas, managing expectations, coordinating complex schedules, and delivering executive reporting on technical health and performance metrics
+
+SQL & DATA ANALYSIS (Required Qualification):
+
+• Expert SQL proficiency: Used SQL extensively for data validation, integrity checks, and trend analysis across Medicare platform databases
+• Complex query experience: Joined large datasets to identify patterns, anomalies, and compliance gaps
+• Database systems: Experience with enterprise relational databases and data quality assurance
+
+HEALTHCARE SYSTEMS EXPERTISE (Ideal Background):
+
+• 9 years deep healthcare domain knowledge: Medicare/CMS regulations, patient data workflows, healthcare IT integrations
+• Technical governance: Managed technical aspects of third-party vendor relationships and audit processes
+• Payment systems understanding: Worked with healthcare billing cycles, member payments, and financial operations in Medicare context
+
+TECHNICAL COMMUNICATION & REQUIREMENTS GATHERING:
+
+• Translated 400+ page CMS regulatory guidance into actionable technical requirements for IT teams annually
+• Created detailed technical documentation, process workflows, and integration specifications
+• Presented technical status updates and risk assessments to senior leadership
+• Coordinated with engineering teams on sprint planning, user stories, and UAT
+
+PROVEN OUTCOMES:
+
+• 100% on-time delivery for 100+ time-sensitive technical deliverables over 3 consecutive years as directly responsible individual (DRI)
+• Zero-defect implementations through systematic technical governance and testing protocols
+• Successfully managed cross-functional technical initiatives affecting millions of members
+• Built executive scorecards tracking technical health metrics and trends
+
+WHY I'M EXCITED ABOUT CEDAR:
+
+Your mission resonates deeply. At Humana, I saw firsthand how complex healthcare billing creates patient confusion and financial hardship. Cedar's approach - leveraging data science and personalization to simplify the patient financial experience - is exactly the innovation healthcare needs.
+
+As a TAM, I would bring:
+• Immediate healthcare domain credibility with provider and payer clients
+• Proven ability to manage technical client relationships at enterprise scale
+• SQL proficiency to analyze integration health and troubleshoot data issues
+• Experience translating between technical and business stakeholders
+• Track record of zero-defect implementations through rigorous governance
+
+My 9 years managing technical governance for Humana's Medicare platform means I can start contributing immediately to Cedar's provider and payer partnerships. I understand the healthcare workflows, the technical integration challenges, and the stakeholder dynamics that Cedar TAMs navigate daily.
+
+My salary expectations align with the $123k-$145k range for this role.
+
+I would welcome the opportunity to discuss how my technical account management experience at Fortune 50 scale can help Cedar scale its provider partnerships and improve healthcare affordability for millions of Americans.
+
+Thank you for your consideration.
+
+Sincerely,
+Matthew David Scott
