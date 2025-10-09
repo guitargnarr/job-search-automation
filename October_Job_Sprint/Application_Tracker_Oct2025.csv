@@ -1,0 +1,22 @@
+Application ID,Job Title,Company,Location,Salary Range,Application Date,Status,Source/Recruiter,Next Action,Notes
+4,Senior Compliance Corrections Specialist,Centene Corporation,Remote - Continental US,"$68,700 - $123,700",2025-10-07,REJECTED,,Archive,"Applied with customized compliance-focused resume. Received rejection."
+9,Technical Account Manager,Cedar (Healthcare Fintech),Remote (US),"$123,250 - $145,000",2025-10-09,APPLIED,Cedar Careers,Wait 7-10 days,"Perfect match: SQL + healthcare + client-facing technical. Submitted with TAM-focused resume highlighting 9 yrs Humana stakeholder coordination."
+10,Project Manager,Louisville Metro Government,"Louisville, KY",TBD,2025-10-07,RESPONDED - Expecting Interview,LinkedIn/Government Portal,Prepare for interview,"Received email confirming met qualifications. Expecting outreach for interview scheduling."
+11,IT ServiceDesk + Vulnerability Management,Louisville Metro Government,"Louisville, KY",TBD,2025-10-07,APPLIED,LinkedIn - Kathy Maxwell (Recruiter),Follow up with Kathy in 5-7 days,"Applied via recruiter outreach on LinkedIn. Vulnerability management role."
+
+OPPORTUNITIES - NOT APPLIED
+Job ID,Job Title,Company,Location,Salary Range,Status,Priority,Notes
+79,Llama Engineer,Meta,Remote,TBD,Email Received - Deprioritized,LOW,Recruiter email received. Out of scope qualifications. Deprioritized.
+74,AI/ML Engineer - NLP & Generative AI,GEICO (Government Employees Insurance),"Jeffersonville, IN","$95,000 - $135,000",Ready to Apply,HIGH,"Application generated. Verify posting active at https://geico.wd1.myworkdayjobs.com/External before submitting."
+75,Data & Analytics Engineer - AI/ML,PwC (PricewaterhouseCoopers),Remote (Louisville office),"$100,000 - $145,000",Ready to Apply,HIGH,"Governance-focused application generated. Big 4 consulting."
+72,Data Scientist III - ML Engineering,Cedar (Healthcare Fintech),Remote (US),"$110,000 - $150,000",Ready to Apply,HIGH,"Healthcare fintech. Application generated but TAM role (#76) is better fit."
+71,Senior Compliance Corrections Specialist,Centene Corporation,Remote,"$68,700 - $123,700",Not Applied,HIGH,"Different Centene role than #4. Consider applying."
+70,Analytics Consultant,Deloitte - Healthcare Practice,Remote or Louisville,"$90,000 - $130,000",Not Applied,HIGH,"Big 4 healthcare consulting."
+
+SUMMARY STATS
+Total Jobs in Database,76
+Applications Submitted,4
+Active Applications,3
+Rejected,1
+Awaiting Interview,1
+Response Rate,"25% (1/4)"
