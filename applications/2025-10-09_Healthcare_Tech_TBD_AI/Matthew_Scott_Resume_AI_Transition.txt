@@ -1,0 +1,104 @@
+MATTHEW DAVID SCOTT
+Louisville, KY | 502-345-0525 | matthewdscott7@gmail.com | linkedin.com/in/mscott77/
+
+AI PRODUCT OWNER - HEALTHCARE CLAIMS/LLM
+Business Analyst Transitioning to AI/ML Engineering
+
+PROFESSIONAL SUMMARY
+Healthcare business analyst with 9 years at Humana (Fortune 50) specializing in Medicare compliance, quality assurance, and data validation. Proven track record leading enterprise projects with zero defects, performing SQL-based data analysis, and coordinating cross-functional teams. Seeking to leverage healthcare domain expertise and analytical skills for AI/ML roles. Strong foundation in testing methodologies, regulatory compliance, and data-driven decision making.
+
+CORE COMPETENCIES
+• Healthcare Domain Expert (9 years Medicare)     • SQL & Data Validation
+• Quality Assurance & Testing                     • CMS Regulatory Compliance
+• Cross-Functional Project Leadership             • Data Analysis & Reporting
+• Analytics-Based Testing Methodology             • Enterprise Stakeholder Management
+• Agile/SDLC Methodologies                        • Process Improvement
+• Python (Learning - AI/ML Projects)              • Technical Documentation
+
+PROFESSIONAL EXPERIENCE
+
+Senior Risk Management Professional II (Business Analyst)
+HUMANA, INC. | Louisville, KY | November 2022 - August 2025
+
+Medicare Compliance & Quality Assurance Business Analyst leading regulatory compliance, data validation, and stakeholder coordination for Humana's Medicare platform serving millions of members. Subject matter expert (SME) for CMS regulations with responsibility for cross-functional project leadership and executive reporting.
+
+KEY ACHIEVEMENTS RELEVANT TO AI/ML:
+
+Data Validation & Quality Assurance:
+• Led e-Commerce Acceleration and Data Modernization projects achieving ZERO critical or high defects through systematic testing and data validation methodologies
+• Developed analytics-based testing approach targeting highest-impact customer segments through data-driven experiment design - directly applicable to ML model testing
+• Used SQL extensively for data integrity validation, pattern identification, and trend analysis across Medicare platform data
+
+Medicare Regulatory & Domain Expertise:
+• Reviewed 400+ page CMS Final Rule guidance annually, identifying compliance risks and translating complex regulations into actionable business strategies
+• Achieved 100% on-time delivery for 100+ time-sensitive Medicare Member Annual Communications (MAC) as directly responsible individual (DRI) for 3 consecutive years
+• Deep understanding of Medicare/CMS ecosystem essential for building compliant healthcare AI systems
+
+Project Leadership & Coordination:
+• Orchestrated Annual Enrollment Period (AEP) web marketing - Humana's highest-revenue period - ensuring seamless launch through rigorous testing and cross-functional coordination
+• Managed stakeholder relationships across IT, Legal, Regulatory & Compliance, and business units at Fortune 50 enterprise scale
+• Built executive scorecards tracking performance metrics and trends, enabling data-informed strategic decisions
+
+Analytics & Technical Skills:
+• SQL querying for data analysis, validation, and reporting (expert level)
+• Experience with enterprise tools: JIRA, Oracle, Braze, Firebase, Splunk, SharePoint, Power Apps/Automate
+• Analytics-based methodology development for testing and quality assurance
+• Created detailed documentation for complex processes and technical workflows
+
+Risk Management Professional (Progressive Roles)
+HUMANA, INC. | Louisville, KY | January 2016 - October 2022
+
+9+ years of progressive experience in Medicare compliance, quality assurance, and business analysis.
+
+Key Accomplishments:
+• Built and maintained testing protocols ensuring consistent quality across all deliverables
+• Performed SQL-based data validation to identify discrepancies and ensure data integrity
+• Created standard operating procedures and knowledge repositories
+• Handled escalated issues requiring immediate analytical resolution
+• Participated in Agile ceremonies, sprint planning, and UAT coordination
+
+Account Executive
+MIGHTILY | Louisville, KY | July 2015 - December 2016
+
+Digital marketing account manager coordinating project delivery across technical and creative teams.
+
+• Managed 10+ digital marketing retainer accounts ($40k monthly revenue)
+• Led Google AdWords campaigns using A/B testing to optimize ROI
+• Created analytics reporting for clients on campaign performance
+• Coordinated cross-functional teams (design, development, content)
+
+EDUCATION & CERTIFICATIONS
+
+Bachelor of Science in Communication | University of Louisville | Expected 2025
+• Dean's List, Fall 2013
+• Relevant Coursework: Data Analysis, Technical Writing, Project Management
+
+Professional Development:
+• Google Ads Certified (technical platform proficiency)
+• Annual compliance and security training (2016-2025)
+• Self-directed learning: Python, Machine Learning fundamentals
+
+TECHNICAL SKILLS
+
+Data & Analytics: SQL (MS SQL Server, MySQL, Expert), Data Validation, Trend Analysis, Executive Reporting
+Tools & Platforms: JIRA, SharePoint, Oracle, Braze, Firebase, Splunk, Power Apps/Automate
+Learning/Developing: Python, Machine Learning, AI/ML Frameworks
+Methodologies: Agile/SDLC, Sprint Planning, UAT, Analytics-Based Testing, Root Cause Analysis
+
+HEALTHCARE DOMAIN KNOWLEDGE (Critical for AI)
+• Medicare/CMS Regulations: 9 years regulatory compliance expertise
+• Healthcare Data Governance: Data validation, quality assurance, audit processes
+• Healthcare IT Systems: Enterprise platforms, integration points, testing environments
+• Stakeholder Management: IT, Clinical, Legal, Compliance, Operations coordination
+• Quality Metrics: Performance tracking, executive reporting, trend analysis
+
+WHY AI/ML TRANSITION:
+
+Seeking to apply 9 years of healthcare domain expertise, data validation skills, and analytical problem-solving to AI/ML engineering. My Medicare compliance background provides critical regulatory knowledge for deploying compliant AI in healthcare. Proven ability to master complex technical systems (CMS regulations, enterprise platforms, SQL analytics) demonstrates capacity to rapidly develop ML/AI technical skills while contributing immediately through irreplaceable domain expertise.
+
+KEY STRENGTHS:
+• 9 years Medicare/healthcare domain knowledge (essential for healthcare AI)
+• Proven data analysis and SQL expertise (foundation for ML work)
+• Zero-defect track record through systematic testing (critical for AI validation)
+• Cross-functional leadership at Fortune 50 scale
+• Self-directed learner committed to continuous technical development

@@ -1,0 +1,54 @@
+Matthew David Scott
+Louisville, KY
+502-345-0525 | matthewdscott7@gmail.com
+
+October 09, 2025
+
+Hiring Manager
+[COMPANY NAME]
+Remote (US)
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the AI Product Owner - Healthcare Claims/LLM position at [COMPANY NAME]. With 9 years as a Medicare Compliance Business Analyst at Humana, I bring a unique combination of healthcare domain expertise, data analytics skills, and proven project leadership that positions me to contribute immediately to your AI/ML initiatives.
+
+HEALTHCARE DOMAIN EXPERTISE FOR AI PROJECTS:
+
+At Humana (Fortune 50, serving millions of Medicare members), I developed deep expertise in the healthcare ecosystem that is critical for building accurate, compliant AI systems:
+
+• Medicare Regulatory Knowledge: 9 years navigating CMS regulations, reviewing 400+ page Final Rule guidance annually, and ensuring compliance across enterprise platforms - understanding the regulatory constraints essential for deploying AI in healthcare
+
+• Quality Assurance & Testing: Led data validation and testing methodologies for e-Commerce Acceleration and Data Modernization projects with ZERO critical defects - the systematic rigor needed for AI model validation and bias detection
+
+• Healthcare Data Analysis: Used SQL to validate data integrity, identify patterns, and perform trend analysis on Medicare platform data - foundational skills for ML feature engineering and data pipeline development
+
+• Cross-Functional Project Leadership: Coordinated Annual Enrollment Period (AEP) web marketing - Humana's highest-revenue period - managing stakeholders across IT, Legal, Compliance, and Operations at Fortune 50 scale
+
+• Analytics-Based Testing: Developed testing methodology targeting highest-impact customer segments through data-driven experiment design - directly applicable to ML model testing and validation
+
+TECHNICAL SKILLS & AI TRANSITION:
+
+• SQL & Data Validation: Expert-level SQL querying for data analysis and quality assurance
+• Tools: JIRA, SharePoint, Oracle, Braze, Firebase, Splunk, Power Apps/Automate
+• Learning: Python for AI/ML (personal projects), machine learning fundamentals
+• Methodology: Agile/SDLC, sprint planning, user stories, UAT
+
+PROVEN TRACK RECORD:
+
+• 100% on-time delivery for 100+ time-sensitive deliverables over 3 consecutive years as directly responsible individual (DRI)
+• Led enterprise projects (e-Commerce Acceleration, Data Modernization) with zero critical defects through rigorous testing
+• Built executive scorecards and analytics reporting for senior leadership decision-making
+• Managed third-party audits and cross-functional coordination at scale
+
+WHY AI/ML:
+
+I'm excited to transition my healthcare domain expertise and analytical skills into AI/ML engineering. My 9 years at Humana provide irreplaceable knowledge of Medicare regulations, healthcare data governance, and enterprise-scale quality assurance - exactly what's needed to build compliant, accurate AI systems in healthcare. I bring immediate value through domain expertise while committed to rapidly developing technical ML/AI skills.
+
+My salary expectations align with the $100k-$140k range.
+
+I would welcome the opportunity to discuss how my Medicare compliance and data validation background can accelerate [COMPANY NAME]'s AI initiatives in healthcare.
+
+Thank you for your consideration.
+
+Sincerely,
+Matthew David Scott

@@ -1,0 +1,116 @@
+===============================================================================
+AI JOB APPLICATION SUBMISSION CHECKLIST
+4 HIGH-PRIORITY APPLICATIONS READY
+===============================================================================
+
+Job #74: GEICO AI/ML Engineer - NLP & Generative AI
+Salary: $95,000 - $135,000
+Location: Jeffersonville, IN (5 minutes from Louisville)
+Folder: applications/2025-10-09_GEICO_Government_Employees_Ins_AI/
+
+STEPS:
+1. Open Matthew_Scott_Cover_Letter.txt
+2. Find/Replace: [COMPANY NAME] → GEICO
+3. Review Matthew_Scott_Resume_AI_Transition.txt
+4. Go to: https://www.geico.com/careers
+5. Search: AI OR Machine Learning OR NLP + Jeffersonville
+6. Submit resume + cover letter
+7. Run: python3 mark_applied.py 74
+
+KEY PITCH: Medicare Compliance BA with data validation, testing, regulatory expertise transitioning to AI
+
+-------------------------------------------------------------------------------
+
+Job #75: PwC Data & Analytics Engineer - AI/ML
+Salary: $100,000 - $145,000
+Location: Remote (Louisville office available)
+Folder: applications/2025-10-09_PwC_PricewaterhouseCoopers_AI/
+
+STEPS:
+1. Open Matthew_Scott_Cover_Letter.txt
+2. Find/Replace: [COMPANY NAME] → PwC
+3. Review Matthew_Scott_Resume_AI_Transition.txt
+4. Go to: https://www.pwc.com/us/en/careers.html
+5. Search: Data Analytics Engineer OR AI/ML
+6. Submit resume + cover letter
+7. Run: python3 mark_applied.py 75
+
+KEY PITCH: Fortune 50 healthcare analytics BA, project leadership, Big 4 consulting fit
+
+-------------------------------------------------------------------------------
+
+Job #72: Cedar Data Scientist III - ML Engineering
+Salary: $110,000 - $150,000
+Location: Remote (US)
+Folder: applications/2025-10-09_Cedar_Healthcare_Fintech_AI/
+
+STEPS:
+1. Open Matthew_Scott_Cover_Letter.txt
+2. Find/Replace: [COMPANY NAME] → Cedar
+3. Review Matthew_Scott_Resume_AI_Transition.txt
+4. Go to: https://www.cedar.com/careers
+5. Search: Data Scientist OR Machine Learning
+6. Submit resume + cover letter
+7. Run: python3 mark_applied.py 72
+
+KEY PITCH: Healthcare domain expert with SQL/data validation, quality assurance
+
+-------------------------------------------------------------------------------
+
+Job #73: Healthcare AI Product Owner - Claims/LLM
+Salary: $100,000 - $140,000
+Location: Remote (US)
+Folder: applications/2025-10-09_Healthcare_Tech_TBD_AI/
+
+STEPS:
+1. Open Matthew_Scott_Cover_Letter.txt
+2. Find/Replace: [COMPANY NAME] → [Actual company when found]
+3. Review Matthew_Scott_Resume_AI_Transition.txt
+4. Search for specific company hiring for this role
+5. Submit resume + cover letter
+6. Run: python3 mark_applied.py 73
+
+KEY PITCH: Medicare product knowledge, regulatory compliance, healthcare workflows
+
+===============================================================================
+BATCH SUBMISSION WORKFLOW
+===============================================================================
+
+FAST TRACK (Submit all 4 in one session):
+1. Open all 4 folders in separate windows
+2. Do all Find/Replace operations
+3. Open all 4 company career sites
+4. Submit all 4 applications
+5. Run tracking:
+   python3 mark_applied.py 74
+   python3 mark_applied.py 75
+   python3 mark_applied.py 72
+   python3 mark_applied.py 73
+
+TIME ESTIMATE: 60-90 minutes for all 4 applications
+
+OPTIONAL - PDF CONVERSION:
+Run: python3 convert_to_pdf.py 74
+Run: python3 convert_to_pdf.py 75
+Run: python3 convert_to_pdf.py 72
+Run: python3 convert_to_pdf.py 73
+
+This creates PDF versions in each folder if portals require PDF upload.
+
+===============================================================================
+AFTER SUBMISSION
+===============================================================================
+
+CHECK STATUS:
+python3 check_jobs_fixed.py
+
+EXPECTED OUTPUT:
+#74 GEICO: APPLIED
+#75 PwC: APPLIED
+#72 Cedar: APPLIED
+#73 Healthcare AI: APPLIED
+
+NEXT ACTIONS:
+- Wait 7-10 days for responses
+- Use web search to find 5 more AI/ML roles
+- Repeat generation process with: python3 create_ai_app_CORRECTED.py <job_id>
