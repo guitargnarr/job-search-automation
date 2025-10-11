@@ -179,8 +179,8 @@ class FollowUpService:
                 Application.applied_date < min_cutoff_date,
                 Application.applied_date.is_not(None),  # Must have an application date
                 # Follow-up criteria
-                Application.followup_sent == False,  # Haven't been flagged yet
-                Application.response_received == False,  # No response received
+                Application.followup_sent.is_(False),  # Haven't been flagged yet
+                Application.response_received.is_(False),  # No response received
                 # Safety: don't exceed max follow-ups
                 Application.follow_ups_sent < self.MAX_FOLLOW_UPS
             )
@@ -291,7 +291,7 @@ class FollowUpService:
         """
         query = select(Application).join(Job).join(Company).where(
             and_(
-                Application.followup_sent == True,
+                Application.followup_sent.is_(True),
                 Application.follow_ups_sent < self.MAX_FOLLOW_UPS,
                 # Could add: Application.next_follow_up_scheduled <= datetime.now()
             )
@@ -420,7 +420,6 @@ class FollowUpService:
             logger.error(f"Error creating follow-up record: {e}")
             await db.rollback()
             return None
-
 
     async def send_followup_email_safe(
         self,
