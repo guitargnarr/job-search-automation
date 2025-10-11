@@ -45,11 +45,25 @@ personal_info.txt
 salary_history.txt
 references_with_contact.txt
 
-# Database
+# Personal Documents (Resumes, Cover Letters)
+Matthew_Scott_Resume_*.docx
+Matthew_Scott_Resume_*.md
+*_Resume_*.docx
+*_Resume_*.pdf
+documents/resumes/tailored/*.docx
+documents/cover_letters/sent/*.docx
+*.rtf  # Rich text documents
+
+# Database (but allow schema files)
 *.db
 *.sqlite
 *.sqlite3
 tracking/database/*.backup
+
+# Database Exports (generated data)
+Database_*.csv
+*_Export.csv
+achievements_cache.json
 
 # Temporary Files
 *.tmp
@@ -59,6 +73,7 @@ tracking/database/*.backup
 *.swp
 *.swo
 *~
+~$*  # Word temp files
 tmp/
 temp/
 .pytest_cache/
@@ -75,11 +90,28 @@ temp/
 
 # Application Generated Files
 applications/*/temp/
+applications/20*/  # Dated application folders
 tracking/exports/*.xlsx
 tracking/exports/*.csv
 tracking/reports/*.pdf
 interview_prep/practice_recordings/*.mp4
 interview_prep/practice_recordings/*.mp3
+
+# Generated Scripts (application-specific)
+add_*_job.py
+create_*_application.py
+create_*_cover_letter.py
+mark_applied.py
+log_*_application.py
+fix_*.py
+generate_*.py
+update_*.py
+check_jobs.py
+analyze_documents.py
+
+# Apple-specific files
+*.numbers
+*alias  # Finder aliases
 
 # Archive folders (but track structure)
 Archive_Old_Versions/*
