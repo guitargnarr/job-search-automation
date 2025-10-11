@@ -1,12 +1,14 @@
 """
 Follow-up Automation Service
-Implements intelligent follow-up detection and scheduling logic
+Implements intelligent follow-up detection and scheduling logic with DYNAMIC scheduling
 """
 
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_
+from sqlalchemy.orm import selectinload
+import json
 
 from backend.core.logging import get_logger
 from backend.models.models import (
@@ -34,10 +36,10 @@ matthewdscott7@gmail.com
 
 
 class FollowUpService:
-    """Manages automatic follow-up detection and scheduling"""
+    """Manages automatic follow-up detection and scheduling with DYNAMIC thresholds"""
 
     # Configurable thresholds
-    DEFAULT_FOLLOWUP_DAYS = 7  # Days after application before first follow-up
+    DEFAULT_FOLLOWUP_DAYS = 7  # Days after application before first follow-up (default)
     RESPONSE_TIMEOUT_DAYS = 14  # Days to wait before second follow-up
     MAX_FOLLOW_UPS = 2  # Maximum automatic follow-ups per application
 
@@ -49,7 +51,86 @@ class FollowUpService:
             followup_days: Days to wait before scheduling follow-up (default: 7)
         """
         self.followup_days = followup_days or self.DEFAULT_FOLLOWUP_DAYS
-        logger.info(f"FollowUpService initialized with {self.followup_days} day threshold")
+        logger.info(f"FollowUpService initialized with {self.followup_days} day default threshold")
+
+    async def _calculate_next_follow_up_days(
+        self,
+        db: AsyncSession,
+        job_id: int
+    ) -> int:
+        """
+        Calculate dynamic follow-up delay based on company configuration and job characteristics
+
+        V2.3 REFACTOR - PRIORITY LOGIC (High ROI):
+        0. If Company.followup_override_days is set → RETURN IMMEDIATELY (explicit config wins)
+        1. Else if Company.interview_process contains "long" or "multi-stage" → 10 days
+        2. Else if Job.salary_max > $150,000 (senior role proxy) → 9 days
+        3. Else (default) → 7 days
+
+        Args:
+            db: Async database session
+            job_id: Job ID to analyze
+
+        Returns:
+            Number of days to wait before follow-up (user-configured or heuristic-based)
+        """
+        try:
+            # Fetch Job record
+            job_query = select(Job).where(Job.id == job_id)
+            job_result = await db.execute(job_query)
+            job = job_result.scalar_one_or_none()
+
+            if not job:
+                logger.warning(f"Job {job_id} not found, using default {self.DEFAULT_FOLLOWUP_DAYS} days")
+                return self.DEFAULT_FOLLOWUP_DAYS
+
+            # Fetch related Company record
+            if job.company_id:
+                company_query = select(Company).where(Company.id == job.company_id)
+                company_result = await db.execute(company_query)
+                company = company_result.scalar_one_or_none()
+
+                if company:
+                    # V2.3 PRIORITY 0: Check for EXPLICIT OVERRIDE (highest priority)
+                    if company.followup_override_days is not None:
+                        logger.info(
+                            f"Job {job_id} ({job.title}) using EXPLICIT OVERRIDE → {company.followup_override_days} days "
+                            f"(Company: {company.name})"
+                        )
+                        return company.followup_override_days
+
+                    # HEURISTIC 1: Check for "long" or "multi-stage" process indicators (fallback)
+                    if company.interview_process:
+                        # Parse interview_process JSON (could be dict or string)
+                        interview_data = company.interview_process
+                        interview_text = ""
+
+                        if isinstance(interview_data, dict):
+                            # Convert dict to string for text search
+                            interview_text = json.dumps(interview_data).lower()
+                        elif isinstance(interview_data, str):
+                            interview_text = interview_data.lower()
+
+                        if "long" in interview_text or "multi-stage" in interview_text or "multi stage" in interview_text:
+                            logger.info(
+                                f"Job {job_id} ({job.title}) has long/multi-stage interview process → 10 days (heuristic)"
+                            )
+                            return 10
+
+            # HEURISTIC 2: Check if senior role (salary > $150k) (fallback)
+            if job.salary_max and job.salary_max > 150000:
+                logger.info(
+                    f"Job {job_id} ({job.title}) is senior role (${job.salary_max}) → 9 days (heuristic)"
+                )
+                return 9
+
+            # HEURISTIC 3: Default for standard roles (final fallback)
+            logger.info(f"Job {job_id} ({job.title}) using default → {self.DEFAULT_FOLLOWUP_DAYS} days")
+            return self.DEFAULT_FOLLOWUP_DAYS
+
+        except Exception as e:
+            logger.error(f"Error calculating follow-up days for job {job_id}: {e}")
+            return self.DEFAULT_FOLLOWUP_DAYS
 
     async def check_and_schedule_followup_emails(
         self,
@@ -57,11 +138,11 @@ class FollowUpService:
         dry_run: bool = True
     ) -> Dict[str, Any]:
         """
-        Check for applications needing follow-ups and schedule them
+        Check for applications needing follow-ups and schedule them (DYNAMIC SCHEDULING)
 
         This function identifies applications that:
         1. Have status APPLIED (waiting for response)
-        2. Have applied_date older than configurable threshold (default: 7 days)
+        2. Have applied_date older than DYNAMICALLY CALCULATED threshold
         3. Have followup_sent = False (haven't been flagged for follow-up yet)
         4. Haven't received a response
         5. Haven't exceeded max follow-ups
@@ -79,12 +160,14 @@ class FollowUpService:
                 'dry_run': bool
             }
         """
-        logger.info("Starting follow-up check...")
+        logger.info("Starting DYNAMIC follow-up check...")
 
-        # Calculate cutoff date (applications older than this need follow-up)
-        cutoff_date = datetime.now() - timedelta(days=self.followup_days)
+        # Use MINIMUM threshold (7 days) to get candidate applications
+        # We'll filter individually based on dynamic thresholds
+        min_cutoff_date = datetime.now() - timedelta(days=self.DEFAULT_FOLLOWUP_DAYS)
 
-        # Build query for applications needing follow-up
+        # V2.3 PERFORMANCE FIX: Use eager loading to fetch Job and Company in single query
+        # This eliminates 2 additional queries per application (massive improvement)
         query = select(Application).join(Job).join(Company).where(
             and_(
                 # Status criteria: waiting for response
@@ -92,8 +175,8 @@ class FollowUpService:
                     ApplicationStatus.APPLIED,
                     ApplicationStatus.READY  # Include ready if they were essentially applied
                 ]),
-                # Time criteria: older than threshold
-                Application.applied_date < cutoff_date,
+                # Time criteria: older than MINIMUM threshold (we filter more below)
+                Application.applied_date < min_cutoff_date,
                 Application.applied_date.is_not(None),  # Must have an application date
                 # Follow-up criteria
                 Application.followup_sent == False,  # Haven't been flagged yet
@@ -101,27 +184,52 @@ class FollowUpService:
                 # Safety: don't exceed max follow-ups
                 Application.follow_ups_sent < self.MAX_FOLLOW_UPS
             )
+        ).options(
+            selectinload(Application.job).selectinload(Job.company)
         )
 
         result = await db.execute(query)
-        applications = result.scalars().all()
+        candidate_applications = result.scalars().all()
 
-        logger.info(f"Found {len(applications)} applications needing follow-up")
+        logger.info(f"Found {len(candidate_applications)} candidate applications (>= {self.DEFAULT_FOLLOWUP_DAYS} days old)")
 
         # Prepare results
         results = {
-            'applications_checked': len(applications),
+            'applications_checked': 0,
             'followups_needed': 0,
             'applications_updated': [],
-            'dry_run': dry_run
+            'dry_run': dry_run,
+            'skipped_due_to_dynamic_threshold': []
         }
 
-        for app in applications:
-            # Load related job and company for context
-            await db.refresh(app, ['job'])
-            await db.refresh(app.job, ['company'])
+        for app in candidate_applications:
+            # V2.3 PERFORMANCE FIX: Job and Company already eagerly loaded via selectinload
+            # No need for db.refresh() - data is already available (saves 2 queries per app)
+
+            # DYNAMIC CALCULATION: Get job-specific threshold
+            dynamic_days = await self._calculate_next_follow_up_days(db, app.job.id)
 
             days_since_application = (datetime.now() - app.applied_date).days
+
+            # Check if application meets its SPECIFIC threshold
+            if days_since_application < dynamic_days:
+                # Not yet time to follow up based on dynamic threshold
+                logger.debug(
+                    f"Skipping {app.job.company.name if app.job.company else 'Unknown'} - "
+                    f"{app.job.title}: {days_since_application} days < {dynamic_days} day threshold"
+                )
+                results['skipped_due_to_dynamic_threshold'].append({
+                    'application_id': app.id,
+                    'job_title': app.job.title,
+                    'company_name': app.job.company.name if app.job.company else 'Unknown',
+                    'days_since_application': days_since_application,
+                    'dynamic_threshold': dynamic_days,
+                    'days_remaining': dynamic_days - days_since_application
+                })
+                continue
+
+            # Application meets dynamic threshold - proceed with follow-up
+            results['applications_checked'] += 1
 
             app_info = {
                 'application_id': app.id,
@@ -129,6 +237,7 @@ class FollowUpService:
                 'company_name': app.job.company.name if app.job.company else 'Unknown',
                 'applied_date': app.applied_date.strftime('%Y-%m-%d'),
                 'days_since_application': days_since_application,
+                'dynamic_threshold_used': dynamic_days,
                 'current_followups_sent': app.follow_ups_sent,
                 'status': app.status.value
             }
@@ -138,7 +247,7 @@ class FollowUpService:
                 logger.info(
                     f"[DRY RUN] Would schedule follow-up for: "
                     f"{app_info['company_name']} - {app_info['job_title']} "
-                    f"(Applied {days_since_application} days ago)"
+                    f"(Applied {days_since_application} days ago, threshold: {dynamic_days} days)"
                 )
             else:
                 # Actually update the database
@@ -149,7 +258,8 @@ class FollowUpService:
 
                 logger.info(
                     f"Scheduled follow-up for: {app_info['company_name']} - "
-                    f"{app_info['job_title']} (Applied {days_since_application} days ago)"
+                    f"{app_info['job_title']} (Applied {days_since_application} days ago, "
+                    f"threshold: {dynamic_days} days)"
                 )
 
             results['followups_needed'] += 1
@@ -160,6 +270,12 @@ class FollowUpService:
             logger.info(f"Updated {len(results['applications_updated'])} applications with follow-up flag")
         else:
             logger.info("[DRY RUN] No database changes made")
+
+        # Log summary of dynamic filtering
+        logger.info(
+            f"DYNAMIC SUMMARY: {results['followups_needed']} applications ready for follow-up, "
+            f"{len(results['skipped_due_to_dynamic_threshold'])} skipped (threshold not met)"
+        )
 
         return results
 

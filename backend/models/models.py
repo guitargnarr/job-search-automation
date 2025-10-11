@@ -57,6 +57,9 @@ class Company(Base):
     culture_notes = Column(Text)
     interview_process = Column(JSON)  # Common interview steps
 
+    # Follow-up configuration (V2.3 Refactor: Explicit Override)
+    followup_override_days = Column(Integer, nullable=True)  # Manual override for follow-up timing
+
     # Tracking
     last_researched = Column(DateTime)
     created_at = Column(DateTime, default=func.now())
