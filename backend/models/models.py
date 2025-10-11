@@ -8,10 +8,10 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from datetime import datetime
 import enum
 
 from backend.core.database import Base
+
 
 class Priority(enum.Enum):
     """Job priority levels"""
@@ -19,6 +19,7 @@ class Priority(enum.Enum):
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     SKIP = "SKIP"
+
 
 class ApplicationStatus(enum.Enum):
     """Application status tracking"""
@@ -31,6 +32,7 @@ class ApplicationStatus(enum.Enum):
     REJECTED = "REJECTED"
     WITHDRAWN = "WITHDRAWN"
 
+
 class ResponseType(enum.Enum):
     """Email response classifications"""
     INTERVIEW = "INTERVIEW"
@@ -38,6 +40,7 @@ class ResponseType(enum.Enum):
     INFO_REQUEST = "INFO_REQUEST"
     OFFER = "OFFER"
     OTHER = "OTHER"
+
 
 class Company(Base):
     """Company information with research data"""
@@ -67,6 +70,7 @@ class Company(Base):
 
     # Relationships
     jobs = relationship("Job", back_populates="company")
+
 
 class Job(Base):
     """Job postings with intelligent tracking"""
@@ -98,6 +102,10 @@ class Job(Base):
     status = Column(String(50), default="new")
     application_deadline = Column(Date)
 
+    # Verification tracking (V2.4: Job legitimacy validation)
+    verified_status = Column(String(50))  # OPEN, CLOSED, NOT_FOUND, NOT_CHECKED
+    last_verified = Column(DateTime)  # When we last checked the URL
+
     # Timestamps
     discovered_at = Column(DateTime, default=func.now())
     created_at = Column(DateTime, default=func.now())
@@ -112,6 +120,7 @@ class Job(Base):
         Index("idx_job_priority_status", "priority", "status"),
         Index("idx_job_fit_score", "fit_score"),
     )
+
 
 class Application(Base):
     """Application tracking with automation data"""
@@ -174,6 +183,7 @@ class Application(Base):
     linkedin_outreach = relationship("LinkedInOutreach", back_populates="application")
     follow_ups = relationship("FollowUp", back_populates="application")
 
+
 class EmailTracking(Base):
     """Automated email tracking"""
     __tablename__ = "email_tracking"
@@ -210,6 +220,7 @@ class EmailTracking(Base):
     __table_args__ = (
         Index("idx_email_unprocessed", "processed", "received_date"),
     )
+
 
 class LinkedInOutreach(Base):
     """LinkedIn automation tracking"""
@@ -252,6 +263,7 @@ class LinkedInOutreach(Base):
     # Relationships
     application = relationship("Application", back_populates="linkedin_outreach")
 
+
 class FollowUp(Base):
     """Follow-up tracking and automation"""
     __tablename__ = "follow_ups"
@@ -283,6 +295,7 @@ class FollowUp(Base):
     __table_args__ = (
         Index("idx_followup_scheduled", "sent", "scheduled_date"),
     )
+
 
 class TemplatePerformance(Base):
     """Track which templates actually work"""
@@ -316,6 +329,7 @@ class TemplatePerformance(Base):
     last_used = Column(DateTime)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
 
 class AnalyticsEvent(Base):
     """Track everything for analysis"""
