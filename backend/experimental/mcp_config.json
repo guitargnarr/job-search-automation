@@ -1,0 +1,87 @@
+{
+  "mcpServers": {
+    "job-search": {
+      "name": "Job Search Automation",
+      "description": "Manages job discovery, tracking, and analytics",
+      "command": "python3",
+      "args": [
+        "/Users/matthewscott/Desktop/Job_Search/backend/mcp/job_search_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/matthewscott/Desktop/Job_Search",
+        "DATABASE_URL": "sqlite+aiosqlite:///job_search.db"
+      },
+      "capabilities": {
+        "resources": [
+          "jobs://list - View all tracked jobs",
+          "jobs://analytics - Real-time metrics",
+          "companies://research - Company information",
+          "applications://status - Application pipeline"
+        ],
+        "tools": [
+          "search_jobs - Web search for opportunities",
+          "add_job - Add jobs to tracking",
+          "optimize_resume_for_job - ATS optimization",
+          "create_application - Track applications"
+        ]
+      }
+    },
+    "email-intel": {
+      "name": "Email Intelligence",
+      "description": "Automated email monitoring and response classification",
+      "command": "python3",
+      "args": [
+        "/Users/matthewscott/Desktop/Job_Search/backend/mcp/email_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/matthewscott/Desktop/Job_Search",
+        "DATABASE_URL": "sqlite+aiosqlite:///job_search.db",
+        "GMAIL_TOKEN_FILE": "/Users/matthewscott/Desktop/Job_Search/gmail_token.json"
+      },
+      "capabilities": {
+        "resources": [
+          "email://unread_responses - New responses",
+          "email://interview_invites - Interview opportunities",
+          "email://metrics - Response rate analytics"
+        ],
+        "tools": [
+          "scan_inbox - Scan for job responses",
+          "classify_response - AI categorization",
+          "mark_email_read - Process tracking",
+          "link_email_to_application - Connect responses"
+        ]
+      }
+    },
+    "doc-gen": {
+      "name": "Document Generation",
+      "description": "Creates ATS-optimized resumes and cover letters",
+      "command": "python3",
+      "args": [
+        "/Users/matthewscott/Desktop/Job_Search/backend/mcp/document_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/matthewscott/Desktop/Job_Search",
+        "DATABASE_URL": "sqlite+aiosqlite:///job_search.db"
+      },
+      "capabilities": {
+        "resources": [
+          "templates://resumes - Resume templates",
+          "templates://cover_letters - Letter templates",
+          "keywords://extracted - Job keywords",
+          "documents://generated - Created documents"
+        ],
+        "tools": [
+          "generate_tailored_resume - ATS-optimized resumes",
+          "create_cover_letter - Personalized letters",
+          "analyze_ats_score - Compatibility scoring",
+          "extract_requirements - Parse job postings"
+        ]
+      }
+    }
+  },
+  "configuration": {
+    "autoStart": false,
+    "debug": true,
+    "timeout": 30000
+  }
+}
